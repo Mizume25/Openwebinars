@@ -1,5 +1,5 @@
 //Formas de declarar variables en JS
-let wordone = "Hola Mundo" //Let = donde guarda su variable 
+let wordone = "Hola Mundko" //Let = donde guarda su variable 
 console.log (wordone); //Console.log debuggea la secuencia
 
 var wordtwo = "Adios Mundo" //var = donde gauarda su variable
