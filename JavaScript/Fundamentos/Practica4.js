@@ -1,18 +1,19 @@
+                    //Parametros
+/*function getCopyright(name, year = 2023) {
+    let copyright = name + " - " + year;
+    return copyright;
+}
+                        //Argumentos
+let result = getCopyright("Openwebinars", 2022);
+console-console.log(result);ç
+*/
+//La pre-inizialicacion es mas debil que el arumento
 
-//
-function getCopyright(name, year, callback) {
-    let copyright = callback(name, year);
+
+let result = function(name,year = 2023) {
+    let copyright = name + " -- " + year;
     return copyright;
 }
 
-let formatWithPipe = function (name, year) {
-    return name + " | " + year;
-} // |
-
-let formatWithHypen = function (name, year) {
-    return name + " - " + year;
-} // -
-
-getCopyright("Armando", 2023, formatWithPipe);
-//Llama ala Funcion: "Aramando" = name, 2023 = year, funcion = callback
+console.log (result("Gabriel"))
 

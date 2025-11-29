@@ -16,16 +16,15 @@ console.log("\nEl numero random operara los siguentes numeros random",randomNumb
 
 // Si el numero es menor o igual a 50 sumara y restara si es mayor dividira y multiplicara
 if(test(randomNumber)){
-    let resultado1 = multi(randomNumber,randomNumberOne)
-    let resultado2 = div(randomNumber,randomNumberTwo)
-    console.log (randomNumber," x ",randomNumberOne," = ", resultado1) 
-    console.log (randomNumber," / ",randomNumberTwo," = ", resultado2) 
-} else {
-    let resultado1 = sum(randomNumber,randomNumberOne)
-    let resultado2 = rest(randomNumber,randomNumberTwo)
 
-    console.log (randomNumber," + ",randomNumberOne," = ", resultado1) 
-    console.log (randomNumber," - ",randomNumberTwo," = ", resultado2)    
+    console.log("\nEl numero", randomNumber, "es menor o igual que 50 por tanto dividira y multiplicara")
+        console.log (randomNumber," x ",randomNumberOne," = ", multi(randomNumber,randomNumberOne)) 
+        console.log (randomNumber," / ",randomNumberTwo," = ", div(randomNumber,randomNumberTwo)) 
+} else {
+
+    console.log("\nEl numero", randomNumber, "es mayor que 50 por tanto sumara y restara")
+        console.log (randomNumber," + ",randomNumberOne," = ", sum(randomNumber,randomNumberOne)) 
+        console.log (randomNumber," - ",randomNumberTwo," = ", rest(randomNumber,randomNumberTwo))    
 }
 
 
@@ -37,16 +36,8 @@ function random () {
 }
 
 //Function testing
-function test (randomNumber) {
-    
-    if (randomNumber <= 50){
-    console.log("\nEl numero", randomNumber, "es menor o igual que 50 por tanto dividira y multiplicara")
-    Boolean = true
-    } else {
-    console.log("\nEl numero", randomNumber, "es mayor que 50 por tanto sumara y restara")
-    Boolean = false
-    }
-    return Boolean  
+function test (randomNumber) { 
+    return randomNumber <=50? true:false; 
 }
 
 //Funcion para summar
