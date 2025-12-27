@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica de JavaScript</title>
+    <!--PROMT DE HTML Y CSS HECHO CON IA PARA LA PRACTICA DE JAVASRIPTT-->
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h2 {
+            color: #2575fc;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        button {
+            background-color: #2575fc;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            margin: 10px 5px;
+        }
+        
+        button:hover {
+            background-color: #1a65e0;
+        }
+        
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        input, select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            margin: 10px 0;
+            font-size: 1rem;
+        }
+        
+        .result {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border-left: 4px solid #2575fc;
+            min-height: 50px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .counter-display {
+            font-size: 2.5rem;
+            text-align: center;
+            font-weight: bold;
+            color: #2575fc;
+            margin: 15px 0;
+        }
+        
+        .counter-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .task-item {
+            padding: 12px;
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .task-item.completed {
+            background-color: #e8f5e9;
+            text-decoration: line-through;
+            color: #666;
+        }
+        
+        .task-actions button {
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background-color: #4caf50;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            opacity: 1;
+        }
+        
+        .warning {
+            background-color: #ff9800;
+        }
+        
+        .danger {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Práctica de JavaScript</h1>
+        <p class="subtitle">Modifica estas secciones con JavaScript para practicar</p>
+    </header>
+    
+    <div class="container">
+        <!-- Contador -->
+        <div class="card">
+            <h2>Contador Interactivo</h2>
+            <p>Haz que los botones incrementen, decrementen y reinicien el contador.</p>
+            <div class="counter-display" id="counterValue">0</div>
+            <div class="counter-controls">
+                <button id="decrementBtn">- Decrementar</button>
+                <button id="resetBtn">Reiniciar</button>
+                <button id="incrementBtn">+ Incrementar</button>
+            </div>
+            <div class="result" id="counterResult"></div>
+        </div>
+        
+        <!-- Calculadora -->
+        <div class="card">
+            <h2>Calculadora Básica</h2>
+            <p>Implementa las operaciones matemáticas básicas.</p>
+            <input type="number" id="num1" placeholder="Primer número">
+            <input type="number" id="num2" placeholder="Segundo número">
+            <select id="operation">
+                <option value="">Selecciona una operación</option>
+                <option value="add">Suma (+)</option>
+                <option value="subtract">Resta (-)</option>
+                <option value="multiply">Multiplicación (×)</option>
+                <option value="divide">División (÷)</option>
+            </select>
+            <button id="calculateBtn">Calcular</button>
+            <div class="result" id="calcResult">El resultado aparecerá aquí</div>
+        </div>
+        
+        <!-- Lista de Tareas -->
+        <div class="card">
+            <h2>Lista de Tareas</h2>
+            <p>Añade funcionalidad para agregar, completar y eliminar tareas.</p>
+            <div>
+                <input type="text" id="taskInput" placeholder="Nueva tarea">
+                <button id="addTaskBtn">Agregar Tarea</button>
+            </div>
+            <div id="taskList">
+                <!-- Las tareas se agregarán aquí con JavaScript -->
+                <div class="task-item">
+                    <span>Ejemplo de tarea pendiente</span>
+                    <div class="task-actions">
+                        <button class="complete-btn">Completar</button>
+                        <button class="delete-btn">Eliminar</button>
+                    </div>
+                </div>
+                <div class="task-item completed">
+                    <span>Ejemplo de tarea completada</span>
+                    <div class="task-actions">
+                        <button class="complete-btn">Deshacer</button>
+                        <button class="delete-btn">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Botón Especial -->
+        <div class="card">
+            <h2>Botón con Comportamiento Especial</h2>
+            <p>Haz que este botón cambie de color, texto y estado al hacer clic.</p>
+            <button id="specialBtn" style="width: 100%; padding: 15px;">Haz clic para cambiar mi estado</button>
+            <div class="result" id="specialBtnResult">Estado: Sin cambios aún</div>
+        </div>
+        
+        <!-- Temporizador -->
+        <div class="card">
+            <h2>Temporizador</h2>
+            <p>Implementa un temporizador que cuente hacia atrás desde el valor ingresado.</p>
+            <input type="number" id="timerInput" placeholder="Segundos (ej: 10)" min="1" max="60">
+            <button id="startTimerBtn">Iniciar Temporizador</button>
+            <button id="stopTimerBtn" disabled>Detener Temporizador</button>
+            <div class="counter-display" id="timerDisplay">00:00</div>
+            <div class="result" id="timerResult">Ingresa un valor y haz clic en iniciar</div>
+        </div>
+        
+        <!-- Detector de Cierre -->
+        <div class="card">
+            <h2>Detector de Cierre de Página</h2>
+            <p>Muestra un mensaje cuando el usuario intente cerrar la página.</p>
+            <p>Intenta cerrar esta pestaña para ver el mensaje (luego implementa JavaScript para ello).</p>
+            <button id="enableCloseDetection">Habilitar Detección de Cierre</button>
+            <button id="disableCloseDetection" disabled>Deshabilitar Detección</button>
+            <div class="result" id="closeDetectionResult">Detección desactivada</div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Práctica de JavaScript - Modifica el código para implementar las funcionalidades</p>
+        <p>Intenta implementar cada una de las siguientes acciones:</p>
+        <ul style="list-style: none; margin-top: 10px;">
+            <li>1. Contador funcional</li>
+            <li>2. Calculadora operativa</li>
+            <li>3. Gestión de tareas</li>
+            <li>4. Botón con estados cambiantes</li>
+            <li>5. Temporizador que cuenta hacia atrás</li>
+            <li>6. Detectar cuando se intenta cerrar la página</li>
+        </ul>
+    </footer>
+    
+    <!-- Notificación -->
+    <div class="notification" id="notification"></div>
+    <script src="Act1.js"></script>
+</body>
+</html>
