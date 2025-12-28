@@ -12,7 +12,10 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
         }
+
+        
         
         body {
             background-color: #f5f7fa;
@@ -107,6 +110,46 @@
             border-left: 4px solid #2575fc;
             min-height: 50px;
         }
+
+        .resultDiff {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border-left: 4px solid #2575fc;
+            min-height: 50px;
+        }
+
+        .buen-humor {
+            background-color: greenyellow !important;
+            color: black;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border-left: 4px solid #2575fc;
+            min-height: 50px;
+        }
+
+        .mal-humor {
+            background-color: red !important;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border-left: 4px solid #2575fc;
+            min-height: 50px;
+        }
+
+        .humor-Triste {
+            background-color: blue;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border-left: 4px solid #2575fc;
+            min-height: 50px;
+        }
+
         
         .hidden {
             display: none;
@@ -233,17 +276,17 @@
             <div id="taskList">
                 <!-- Las tareas se agregarán aquí con JavaScript -->
                 <div class="task-item">
-                    <span>Ejemplo de tarea pendiente</span>
+                    <span id="span1">Ejemplo de tarea pendiente</span>
                     <div class="task-actions">
                         <button class="complete-btn">Completar</button>
-                        <button class="delete-btn">Eliminar</button>
+                        <button class="delete-btn1">Eliminar</button>
                     </div>
                 </div>
                 <div class="task-item completed">
-                    <span>Ejemplo de tarea completada</span>
+                    <span id="span2">Ejemplo de tarea completada</span>
                     <div class="task-actions">
                         <button class="undo-btn">Deshacer</button>
-                        <button class="delete-btn">Eliminar</button>
+                        <button class="delete-btn2">Eliminar</button>
                     </div>
                 </div>
             </div>
@@ -254,18 +297,19 @@
             <h2>Botón con Comportamiento Especial</h2>
             <p>Haz que este botón cambie de color, texto y estado al hacer clic.</p>
             <button id="specialBtn" style="width: 100%; padding: 15px;">Haz clic para cambiar mi estado</button>
-            <div class="result" id="specialBtnResult">Estado: Sin cambios aún</div>
+
+            <div class="resultDiff" id="mood"></div>
         </div>
         
         <!-- Temporizador -->
         <div class="card">
             <h2>Temporizador</h2>
             <p>Implementa un temporizador que cuente hacia atrás desde el valor ingresado.</p>
-            <input type="number" id="timerInput" placeholder="Segundos (ej: 10)" min="1" max="60">
+            <input type="number" id="timerInput" placeholder="1 min" min="1" max="60">
             <button id="startTimerBtn">Iniciar Temporizador</button>
             <button id="stopTimerBtn" disabled>Detener Temporizador</button>
             <div class="counter-display" id="timerDisplay">00:00</div>
-            <div class="result" id="timerResult">Ingresa un valor y haz clic en iniciar</div>
+            <div class="result" id="timerResult"></div>
         </div>
         
         <!-- Detector de Cierre -->

@@ -104,51 +104,230 @@ calculateBtn.addEventListener("click", function() {
 // 3. LISTA DE TAREAS
 
 //DECLARACIONES
-const InputTask = document.querySelector("#taskInput");                   //Espacio donde se escribe la taea
+const InputTask = document.querySelector("#taskInput");                     //Espacio donde se escribe la taea
 const buttonAddTask = document.querySelector("#addTaskBtn");                //Botton para agregar tarea
-const DisplaytaskPending = document.querySelector("span");            //Espacio de tareas pendientes
-const DisplaytaskCompleted = document.querySelector("span")  //Espacio de tareas completadas
-const CompletedTaskBtn = document.querySelector(".complete-btn"); 
-const RemoveTaskBtn = document.querySelector(".delete-btn");
-const UndoTaskBtn = document.querySelector(".undo-btn");
+const DisplaytaskPending = document.querySelector("#span1");                //Espacio de tareas pendientes
+const DisplaytaskCompleted = document.querySelector("#span2")               //Espacio de tareas completadas
+const CompletedTaskBtn = document.querySelector(".complete-btn");           //Complentar tarea
+const RemovePendingTaskBtn = document.querySelector(".delete-btn1"); 
+const RemoveCompletedTaskBtn = document.querySelector(".delete-btn2");      //Eliminar Tarea
+const UndoTaskBtn = document.querySelector(".undo-btn");                    //Deshacer Tarea
 
-function UpdateTask() {
-    DisplaytaskPending.textContent = String(InputTask.value); 
-    InputTask.value = "";  
-}
+
 
 
 //ACCIONES
 
 //AGREGAR TAREA
 buttonAddTask.addEventListener("click", function(){
-    UpdateTask();
+
+    //DECLARAMOS EL VALOR IMPUT COMO UN STRING
+    let task = String(InputTask.value);
+
+    //COMPROBAMOS VALORES VACIOS
+    if (task == "") {
+        alert("Necesitas introducir una tarea")
+    } else {
+    
+    //MOVEMOS ELEMTNOS
+    DisplaytaskPending.textContent = task; 
+    
+    //MOFICAMOS HTML DE TEXTO
+    InputTask.value = "";  
+    }
+
 });
 
-// Cuando creas una nueva tarea, agregas este event listener a su botón "Completar"
-completeBtn.addEventListener("click", function() {
-    const taskItem = this.closest(".task-item"); // El DIV completo
-    const taskSpan = taskItem.querySelector("span"); // El SPAN con el texto
+
+//COMPLETAR TAREAS
+CompletedTaskBtn.addEventListener("click", function (){
+
+    // Obtener el texto del span pendiente
+    let task = DisplaytaskPending.textContent;
     
-    // Ahora puedes modificar taskSpan si necesitas
-    // Pero para completar solo necesitas:
-    taskItem.classList.add("completed");
-    this.textContent = "Deshacer";
+    // Verificar si hay tarea pendiente
+    if (task.trim() === "") {
+        alert("No hay tarea pendiente para completar");
+        return;
+    }
+    
+    // Mover el texto al span completado
+    DisplaytaskCompleted.textContent = task;
+    
+    // Limpiar el span pendiente
+    DisplaytaskPending.textContent = "";
+
+
+});
+
+//DESHACER TAREA
+UndoTaskBtn.addEventListener("click", function (){
+
+    // Obtener el texto del span pendiente
+    let task = DisplaytaskCompleted.textContent;
+    
+    // Verificar si hay tarea completada
+    if (task.trim() === "") {
+        alert("No hay tarea completada para deshacer");
+        return;
+    }
+    
+    // Mover el texto al span completado
+    DisplaytaskPending.textContent = task;
+    
+    // Limpiar el span pendiente
+    DisplaytaskCompleted.textContent = "";
+
+
+});
+
+//ELIMINAR TARES PENDIENTES
+RemovePendingTaskBtn.addEventListener("click",function(){
+
+    // Obtener el texto del span pendiente
+    let task = DisplaytaskPending.textContent;
+    
+    // Verificar si hay tarea pendiente
+    if (task.trim() === "") {
+        alert("No hay tarea pendiente por eliminar");
+        return;
+    }
+    
+    // Eliminamos la tarea
+    DisplaytaskPending.textContent = "";
+
+});
+
+
+//ELIMINAR TARES COMPLETADAS
+RemoveCompletedTaskBtn.addEventListener("click",function(){
+
+    // Obtener el texto del span pendiente
+    let task = DisplaytaskCompleted.textContent;
+    
+    // Verificar si hay tarea pendiente
+    if (task.trim() === "") {
+        alert("No hay tarea completa por eliminar");
+        return;
+    }
+    
+    // Eliminamos la tarea
+    DisplaytaskCompleted.textContent = "";
+
 });
 
 
 
 // 4. BOTÓN ESPECIAL
-// - Cambia el color de fondo del botón al hacer clic
-// - Cambia el texto del botón al hacer clic
-// - Alterna entre al menos 3 estados diferentes
-// - Actualiza el contenido de specialBtnResult con el estado actual
+
+//DECLARAMOS VARIABLES
+const SpecialBtn = document.querySelector("#specialBtn");
+const stateMood = document.querySelector("#mood");
+const ChangesMood = document.querySelector(".resultDiff");
+let counterTwo = 0;
+
+//FUNCION QUE CAMBIA EL TEXTO Y LA CLASSE 
+function UpdateStateMood(counterTwo) {
+    
+    if (counterTwo == 1) {
+    stateMood.textContent = "Buen Humor"
+    ChangesMood.classList.remove("resultDiff")  
+    ChangesMood.classList.add("buen-humor")  
+
+    } else if (counterTwo == 2){
+
+    stateMood.textContent = "Mal humor"
+    ChangesMood.classList.remove("buen-humor")  
+    ChangesMood.classList.add("mal-humor")  
+    } else if (counterTwo == 3) {
+
+    stateMood.textContent = "Humor Triste"
+    ChangesMood.classList.remove("mal-humor")  
+    ChangesMood.classList.add("humor-Triste") 
+
+    } else if (counterTwo == 4) {
+    stateMood.textContent = "Estado de animo no definido"
+
+    ChangesMood.classList.remove("humor-Triste")  
+    ChangesMood.classList.add("resultDiff") 
+    }
+    
+
+
+}
+//FUNCION QUE MIDE EL CONTADOR
+SpecialBtn.addEventListener("click", function () {
+    counterTwo++;
+    
+    if (counterTwo < 5) {
+        UpdateStateMood(counterTwo);
+    } else {
+        counterTwo = 1;  // Reiniciar a 1, no a 0
+        UpdateStateMood(counterTwo);  // ¡IMPORTANTE! Actualizar el estado
+    }
+});
+
+
+
+
+
 
 // 5. TEMPORIZADOR
-// - Inicia un temporizador que cuente hacia atrás desde el valor ingresado
-// - Actualiza timerDisplay cada segundo
-// - Detén el temporizador cuando llegue a 0 o cuando se haga clic en stopTimerBtn
-// - Muestra un mensaje en timerResult cuando el temporizador finalice
+
+//DECLARAMOS VARIABLES
+const timeingImput = document.querySelector("#timerInput");
+const starTimeOutbtn = document.querySelector("#startTimerBtn");
+const stopTimeOutbtn = document.querySelector("#stopTimerBtn");
+const DisplayTime = document.querySelector("#timerDisplay");
+const DisplayTimeResult = document.querySelector("#timerResult");
+
+
+starTimeOutbtn.addEventListener("click", function () {
+    
+    // 1. OBTENER el tiempo del input (esto te faltaba)
+    let time = Number(timeingImput.value);
+    
+    // 2. Validar
+    if (time <= 0) {
+        alert("Ingresa un tiempo válido");
+        return;
+    }
+    
+    // 3. Guardar el intervalo en una variable GLOBAL para poder pararlo
+    if (window.miIntervalo) {
+        clearInterval(window.miIntervalo); // Parar cualquier temporizador previo
+    }
+    
+    // 4. Iniciar el temporizador
+    window.miIntervalo = setInterval(function() {
+        // Calcular minutos y segundos actuales
+        let minutos = Math.floor(time / 60);
+        let segundos = time % 60;
+        
+        // Mostrar
+        DisplayTime.textContent = `${minutos}:${segundos.toString().padStart(2, '0')}`;
+        
+        // Reducir tiempo
+        time--;
+        
+        // Detener cuando llegue a 0
+        if (time < 0) {
+            clearInterval(window.miIntervalo);
+            DisplayTime.textContent = "00:00";
+            DisplayTime.style.color = "red";
+            alert("¡TIEMPO!");
+        }
+    }, 100);
+
+});
+
+//ACCIONES
+stopTimeOutbtn.addEventListener("click", function () {
+    stopTimeOutbtn.removeAttribute("disabled");
+    clearInterval(miIntervalo);
+    miIntervalo = null; // Importante: limpiar la referencia
+})
+
 
 // 6. DETECTOR DE CIERRE DE PÁGINA
 // - Muestra un mensaje de confirmación cuando el usuario intente cerrar la página
@@ -198,8 +377,7 @@ function showNotification(message, type = '') {
 // TODO: Añade event listener para el botón especial
 // document.getElementById('specialBtn').addEventListener('click', function() { ... });
 
-// TEMPORIZADOR
-let timerInterval;
+
 // TODO: Añade event listeners para los botones del temporizador
 
 // DETECTOR DE CIERRE
