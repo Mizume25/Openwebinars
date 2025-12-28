@@ -353,36 +353,5 @@ function showNotification(message, type = '') {
 
 
 
-// Código inicial para ayudarte a comenzar:
 
-// CONTADOR - Te doy un ejemplo para empezar
-
-
-// TODO: Añade event listeners para los botones del contador
-// document.getElementById('incrementBtn').addEventListener('click', function() { ... });
-// document.getElementById('decrementBtn').addEventListener('click', function() { ... });
-// document.getElementById('resetBtn').addEventListener('click', function() { ... });
-
-// CALCULADORA
-// TODO: Añade event listener para el botón de calcular
-// document.getElementById('calculateBtn').addEventListener('click', function() { ... });
-
-// LISTA DE TAREAS
-// TODO: Añade event listener para agregar tareas
-// document.getElementById('addTaskBtn').addEventListener('click', function() { ... });
-
-// También necesitarás event delegation para los botones dentro de las tareas
-
-// BOTÓN ESPECIAL
-// TODO: Añade event listener para el botón especial
-// document.getElementById('specialBtn').addEventListener('click', function() { ... });
-
-
-// TODO: Añade event listeners para los botones del temporizador
-
-// DETECTOR DE CIERRE
-// TODO: Añade event listeners para habilitar/deshabilitar la detección
-// También necesitarás el evento beforeunload
-
-// Ejemplo de cómo mostrar una notificación (puedes usarla en tus implementaciones)
 showNotification('Página cargada. ¡Comienza a implementar JavaScript!');
