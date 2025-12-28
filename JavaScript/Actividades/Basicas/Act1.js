@@ -30,57 +30,113 @@ document.querySelector("#incrementBtn").addEventListener("click", function () {
 // 2. CALCULADORA BÁSICA
 
 //DECLARAMOS VARIABLES
-let fristName = document.querySelector("#num1");
-let secondName = document.querySelector("#num2");
-let operation = document.querySelector("#operation.value")
-let result = 0;
-let num1 = 0;
-let num2 = 0;
+// Seleccionar elementos del DOM (HTML)
+const firstNumberInput = document.querySelector("#num1"); // Input del primer número
+const secondNumberInput = document.querySelector("#num2"); // Input del segundo número
+const operationSelect = document.querySelector("#operation"); // Selector de operación
+const calculateBtn = document.querySelector("#calculateBtn"); // Botón de calcular
+const resultDisplay = document.querySelector("#calcResult"); // Div donde mostrar resultado
 
-function caclulatorOperator(fristName,secondName,operation) {
+// Función para realizar cálculos
+function calculateOperation(num1, num2, operation) {
+    // num1 y num2 son números ya convertidos
+    // operation es el valor string del select (ej: "add", "subtract")
     
     let result = 0;
-    fristName = num1;
-    secondName = num2;
-
-    if (operation == "") {
-        alert("Necesitas seleccionar una operacion");
-    } else if (operation == "add") {
-        result =  num1 + num2;
-    }else if (operation == "subtract") {
-        result =  num1 - num2;
-    }else if (operation == "multiply") {
+    
+    // Validar si no se seleccionó operación
+    if (operation === "") {
+        alert("Necesitas seleccionar una operación");
+        return "Error: Selecciona operación";
+    }
+    
+    // Realizar la operación correspondiente
+    if (operation === "add") {
+        result = num1 + num2;
+    } else if (operation === "subtract") {
+        result = num1 - num2;
+    } else if (operation === "multiply") {
         result = num1 * num2;
-    }else if (operation == "divide") {
+    } else if (operation === "divide") {
+        // Validar división entre cero
+        if (num2 === 0) {
+            return "Error: División entre cero";
+        }
         result = num1 / num2;
     }
-
+    
     return result;
 }
 
+// Función para mostrar el resultado en pantalla
+function showResult(resultValue) {
+    // Mostrar el resultado en el div #calcResult
+    resultDisplay.textContent = `Resultado: ${resultValue}`;
+}
 
-document.querySelector("#calculateBtn").addEventListener("click", function () {
-
-    result = caclulatorOperator(fristName,secondName,operation);
-
-    document.querySelector(#calcResult)
-
-
+// Evento click del botón calcular
+calculateBtn.addEventListener("click", function() {
+    // 1. Obtener valores de los inputs como strings
+    const firstValueStr = firstNumberInput.value;
+    const secondValueStr = secondNumberInput.value;
+    
+    // 2. Convertir strings a números (float para decimales)
+    const num1 = parseFloat(firstValueStr);
+    const num2 = parseFloat(secondValueStr);
+    
+    // 3. Obtener la operación seleccionada
+    const operation = operationSelect.value;
+    
+    // 4. Validar que los números sean válidos
+    if (isNaN(num1) || isNaN(num2)) {
+        alert("Por favor, ingresa números válidos en ambos campos");
+        return; // Detener ejecución si hay error
+    }
+    
+    // 5. Realizar cálculo
+    const result = calculateOperation(num1, num2, operation);
+    
+    // 6. Mostrar resultado
+    showResult(result);
 });
 
 
-
-
-//Obtenemos
-
-
-
-
 // 3. LISTA DE TAREAS
-// - Permite agregar nuevas tareas al hacer clic en addTaskBtn
-// - Implementa la funcionalidad para marcar tareas como completadas
-// - Implementa la funcionalidad para eliminar tareas
-// - Usa event delegation para manejar los botones de las tareas dinámicas
+
+//DECLARACIONES
+const InputTask = document.querySelector("#taskInput");                   //Espacio donde se escribe la taea
+const buttonAddTask = document.querySelector("#addTaskBtn");                //Botton para agregar tarea
+const DisplaytaskPending = document.querySelector("span");            //Espacio de tareas pendientes
+const DisplaytaskCompleted = document.querySelector("span")  //Espacio de tareas completadas
+const CompletedTaskBtn = document.querySelector(".complete-btn"); 
+const RemoveTaskBtn = document.querySelector(".delete-btn");
+const UndoTaskBtn = document.querySelector(".undo-btn");
+
+function UpdateTask() {
+    DisplaytaskPending.textContent = String(InputTask.value); 
+    InputTask.value = "";  
+}
+
+
+//ACCIONES
+
+//AGREGAR TAREA
+buttonAddTask.addEventListener("click", function(){
+    UpdateTask();
+});
+
+// Cuando creas una nueva tarea, agregas este event listener a su botón "Completar"
+completeBtn.addEventListener("click", function() {
+    const taskItem = this.closest(".task-item"); // El DIV completo
+    const taskSpan = taskItem.querySelector("span"); // El SPAN con el texto
+    
+    // Ahora puedes modificar taskSpan si necesitas
+    // Pero para completar solo necesitas:
+    taskItem.classList.add("completed");
+    this.textContent = "Deshacer";
+});
+
+
 
 // 4. BOTÓN ESPECIAL
 // - Cambia el color de fondo del botón al hacer clic
