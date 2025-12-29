@@ -31,7 +31,7 @@ if(test(randomNumber)){
 
 //Function generated random number
 function random () {
-    let randomNumber = Math.floor(Math.random() * 100); // Números del 0 al 9
+    let randomNumber = Math.floor(Math.random() * 100); 
     return randomNumber  
 }
 
