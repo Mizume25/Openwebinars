@@ -1,0 +1,22 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "titulo": "Cámara Reflex Pro",
+      "descripcion": "Una cámara de alta resolución ideal para fotografía nocturna y retratos profesionales.",
+      "precio": "899.00€"
+    },
+    {
+      "id": 2,
+      "titulo": "Objetivo 50mm",
+      "descripcion": "Lente de apertura focal fija f/1.8, perfecto para efectos bokeh impresionantes.",
+      "precio": "150.00€"
+    },
+    {
+      "id": 3,
+      "titulo": "Objetivo 60mm",
+      "descripcion": "Lente de apertura focal fija f/1.8, perfecto para efectos bokeh impresionantes.",
+      "precio": "150.00€"
+    }
+  ]
+}
