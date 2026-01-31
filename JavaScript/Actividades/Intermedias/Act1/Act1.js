@@ -25,3 +25,58 @@ fetch("Act1.json") // Asegúrate de que el nombre coincida
         });
     })
     .catch(err => console.error(err));
+
+
+
+const btnGuardar = document.querySelector("#btn-guardar");
+const inputNombre = document.querySelector("#input-nombre");
+const inputBio = document.querySelector("#input-bio");
+
+
+btnGuardar.addEventListener("click", () => {
+    
+
+    const nuevosDatos = {
+        nombre: inputNombre.value,
+        bio: inputBio.value,
+        profesion: "Usuario Local", 
+        foto_url: "https://via.placeholder.com/150",
+        habilidades: ["Persistencia", "LocalStorage"]
+    };
+
+
+    const datosEnFormatoJSON = JSON.stringify(nuevosDatos);
+
+
+    localStorage.setItem("perfilUsuario", datosEnFormatoJSON);
+
+    alert("¡Datos guardados! Refresca la página para ver que no se borran.");
+    
+ 
+    pintarTarjeta(nuevosDatos);
+});
+
+
+function cargarDatos() {
+    const datosGuardados = localStorage.getItem("perfilUsuario");
+
+    if (datosGuardados) {
+
+        const objetoJS = JSON.parse(datosGuardados);
+        pintarTarjeta(objetoJS);
+    } else {
+
+        fetch("data.json")
+            .then(res => res.json())
+            .then(data => pintarTarjeta(data));
+    }
+}
+
+
+function pintarTarjeta(data) {
+    document.querySelector("#user-name").textContent = data.nombre;
+    document.querySelector("#user-bio").textContent = data.bio;
+
+}
+
+cargarDatos();

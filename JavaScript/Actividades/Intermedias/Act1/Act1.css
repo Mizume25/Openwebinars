@@ -26,9 +26,19 @@ body {
     margin-bottom: 1rem;
 }
 
-h1 { margin: 10px 0 5px 0; color: #2d3436; }
-h3 { margin: 0; color: #6c5ce7; font-weight: 400; }
-p { color: #636e72; line-height: 1.5; margin: 20px 0; }
+h1 { margin: 
+    10px 0 5px 0;
+     color: #2d3436; 
+}
+h3 { margin: 0; 
+    color: #6c5ce7; 
+    font-weight: 400; 
+}
+p { 
+    color: #636e72; 
+    line-height: 1.5; 
+    margin: 20px 0; 
+}
 
 .skills-container { text-align: left; }
 ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
@@ -38,4 +48,28 @@ li {
     border-radius: 20px;
     font-size: 0.85rem;
     color: #2d3436;
+}
+
+
+.form-container {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+button {
+    background: #6c5ce7;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }

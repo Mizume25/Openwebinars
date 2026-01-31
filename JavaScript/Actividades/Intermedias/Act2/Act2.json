@@ -1,0 +1,23 @@
+[
+    {
+    "nombre": "Tomate de Rama",
+    "precio": 2.50,
+    "unidad": "kg",
+    "stock": 15,
+    "imagen": "https://cdn.pixabay.com/photo/2011/03/16/16/01/tomatoes-5356_1280.jpg"
+    },
+    {
+    "nombre": "Salmon",
+    "precio": 10.60,
+    "unidad": "kg",
+    "stock": 5,
+    "imagen": "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032_1280.jpg" 
+    },
+    {
+    "nombre": "Cesta de Verduras",
+    "precio": 19.99,
+    "unidad": "kg",
+    "stock": 3,
+    "imagen": "https://cdn.pixabay.com/photo/2015/05/04/10/16/vegetables-752153_1280.jpg" 
+    }
+]

@@ -1,0 +1,18 @@
+.producto-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    width: 200px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    font-family: sans-serif;
+}
+
+#btn-comprar {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
