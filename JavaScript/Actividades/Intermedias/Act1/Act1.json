@@ -1,0 +1,14 @@
+{
+    "id":1,
+    "nombre": "Alex Dev",
+    "profesion": "Fullstack Developer",
+    "bio": "Entusiasta de la tecnología, amante del café y experto en romper código los viernes por la tarde.",
+    "foto_url": "https://randomuser.me/api/portraits/men/32.jpg",
+    "habilidades": [
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "JSON Mastery",
+        "Git"
+    ]
+}
