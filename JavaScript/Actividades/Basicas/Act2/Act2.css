@@ -1,0 +1,35 @@
+.navbar {
+    display: flex;
+    gap: 20px;
+    background: #333;
+    padding: 15px;
+}
+
+.nav-item {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: 0.3s;
+}
+
+.nav-item:hover{
+    background-color: white;
+    color: black;
+}
+
+.area-visual {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: background-color 0.5s ease; /* Transición suave */
+    border: 2px dashed #ccc;
+}
+
+/* Estas son las clases que añadiremos con JS */
+.rojo { background-color: #ff4d4d; color: white; }
+.azul { background-color: #4da6ff; color: white; }
+.verde { background-color: #4dff88; color: black; }
+.naranja { background-color: #ff944d; color: white; }

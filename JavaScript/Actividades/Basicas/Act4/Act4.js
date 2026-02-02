@@ -24,7 +24,6 @@ fetch("Act4.json")
 //Convertir inputs
 const BTNaddTask = document.querySelector("#btn-agregar");
 const inputTask = document.querySelector("#nueva-tarea");
-const deleteTask = document.querySelector("#btn-delete");
 
 let id = 2; // Empieza de 2 porque ya hay 2 tareas
 
@@ -62,6 +61,4 @@ function renderizar(id,stringValue) {
 }
 
 
-deleteTask.addEventListener('click',function () {
-    
-});
+
