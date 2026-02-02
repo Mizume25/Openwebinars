@@ -28,6 +28,7 @@ h1 {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     border-left: 5px solid #007bff; /* Una barrita azul para que se vea profesional */
     color: #555;
+    cursor: pointer;
 }
 
 /* Zona de controles (Input y Botón) */
