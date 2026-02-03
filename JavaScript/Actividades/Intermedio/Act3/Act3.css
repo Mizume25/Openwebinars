@@ -135,3 +135,25 @@ button:hover {
     width: 120px;
     background-color: red;
 }
+#deleteCompra {
+    background-color: red;
+    color: white;
+    width: 30px;         
+    height: 30px;
+    font-weight: bold;
+    border: none;       
+    cursor: pointer;
+    
+ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+    margin: 10px auto;   
+    transition: background 0.2s;
+}
+
+#deleteCompra:hover {
+    background-color: #cc0000; 
+}

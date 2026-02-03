@@ -10,6 +10,7 @@ const searchBTN = document.getElementById("search");
 const btnFilter = document.getElementById("btnVerduras");
 const btnOferta = document.getElementById("btnOfertas");
 const billUser = document.getElementById("bill");
+const delteitemUser = document.getElementById("deleteCompra");
 //Arrays de soporte (arrays que guarda el json, arrays de repetidos, arrays de catalogo de usuario)
 let catalogo = [];
 let arrayRepetidos = [];
@@ -271,7 +272,7 @@ btnListUser.addEventListener('click',function () {
     btnDeleteListUser.style.cssText = `display:block`;
    let html = ``;
    list.forEach(item=>{
-         html += `<div class="card">
+         html += `<div class="card" >
             <h4>${item.nombre}</h4>
             <p><strong>Precio:</strong> ${item.precio}€</p>
             <p>Cantidad: ${item.cantidad}</p>
@@ -283,5 +284,7 @@ btnListUser.addEventListener('click',function () {
    }
 
 });
+
+
 
 
