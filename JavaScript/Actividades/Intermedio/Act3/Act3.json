@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "nombre": "Tomate",
+        "categoria": "verdura",
+        "precio": 2.5,
+        "stock": 10,
+        "oferta": false
+    },
+    {
+        "id": 2,
+        "nombre": "Manzana",
+        "categoria": "fruta",
+        "precio": 1.2,
+        "stock": 0,
+        "oferta": true
+    },
+    {
+        "id": 3,
+        "nombre": "Leche",
+        "categoria": "lacteo",
+        "precio": 1.1,
+        "stock": 5,
+        "oferta": false
+    },
+    {
+        "id": 4,
+        "nombre": "Pimiento",
+        "categoria": "verdura",
+        "precio": 0.8,
+        "stock": 15,
+        "oferta": true
+    },
+    {
+        "id": 5,
+        "nombre": "Plátano",
+        "categoria": "fruta",
+        "precio": 1.9,
+        "stock": 8,
+        "oferta": false
+    }
+]
