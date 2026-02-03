@@ -1,34 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Supermercado JS</title>
     <link rel="stylesheet" href="Act3.css">
 </head>
+
 <body>
 
-<div class="container">
-    <h2>🛒 Gestor de Inventario</h2>
-    <input type="text" id="inputBusqueda" placeholder="Nombre del producto (ej: Tomate)">
-    <button id="btnBuscar">Buscar Producto (.find)</button>
-    <button id="btnMostrar">Mostrad todos los productos</button>
-    <button id="btnVerduras">Solo Verduras (.filter)</button>
-    <button id="btnOfertas">¿Hay Ofertas? (.some)</button>
-    <button id="btnEtiquetas">Generar Etiquetas (.map)</button>
-    <button id="btnocultar">Ocultar Productos</button>
-    <div id="display" class="result-box">
-    
+    <div class="container">
+        <h2>🛒 Gestor de Inventario</h2>
+        <input type="text" id="inputBusqueda" placeholder="Nombre del producto (ej: Tomate)">
+        <button id="btnBuscar">Buscar Producto Especifico</button>
+        <button id="btnMostrar">Mostrar todos los productos</button>
+        <button id="btnVerduras">Solo Verduras</button>
+        <button id="btnOfertas">Ofertas</button>
+        <button id="btnocultar">Ocultar Productos</button>
+        <button id="search">Buscar</button>
+        <div id="display" class="result-box">
+
         </div>
-</div>
+    </div>
 
+    <aside class="sidebar">
+        <div class="widget">
+            <h3>🛒 Carrito</h3>
+            <p>Items escogidos: <span id="contadorCarrito" class="count-value"></span></p>
+        </div>
 
-<!--<div class="card">
+        <div class="widget">
+            <h3>📊 Categorías</h3>
+            <ul class="lista-contadores">
+                <li>Verduras: <span id="contVerdura" class="badge-count"></span></li>
+                <li>Frutas: <span id="contFruta" class="badge-count"></span></li>
+                <li>Lácteos: <span id="contLacteo" class="badge-count"></span></li>
+                <li>Carnicería: <span id="contCarniceria" class="badge-count"></span></li>
+                <li>Pescadería: <span id="contPescaderia" class="badge-count"></span></li>
+                <li>Despensa: <span id="contDespensa" class="badge-count"></span></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!--<div class="card">
                 <span class="badge">${v.categoria}</span>
                 <h4>${v.nombre}</h4>
                 <p><strong>Precio:</strong> ${v.precio}€</p>
                 <p>Stock: ${v.stock}</p>
             </div>
             -->
-<script src="Act3.js"></script>
+    <script src="Act3.js"></script>
 </body>
+
 </html>
