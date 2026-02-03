@@ -47,6 +47,7 @@ function CountItems() {
 function addUserList(id) {
     //Transformamos en objeto 1 objeto del catalogode objetos (productos)
     const obj = catalogo.find(item => item.id == id);
+    
 
     //Comprobamos que este no estereptido
     if (arrayRepetidos.some(idRepetido => idRepetido == id)) {
@@ -73,9 +74,15 @@ function addUserList(id) {
         //Imprimimos resultado
         console.log("Item nuevo guardado en el carrito");
     }
-    
-    //Funcion que cuenta items
+    if (obj.stock == 0) {
+        alert(`No nos queda más ${obj.nombre} en nuestra tienda, seleccione otro producto`);
+        return
+    } else{
+         obj.stock--;
+        stockItemsCatalog(id);
+    }
     CountItems(); 
+   
 }
 
 //FETCH: Lee archivo JSON y guarda en el array local todos los objetos
@@ -100,11 +107,11 @@ btnShowAll.addEventListener('click', function () {
     console.log("Mostrar productos");
     let html = ``; //Declaramos html
     catalogo.forEach(item => { //Foeach
-        html += `<div class="card" onclick="addUserList(${item.id}); buyUser(${item.precio})">
+        html += `<div class="card" onclick="addUserList(${item.id}); buyUser(${item.precio})" data-id=${item.id}>
                 <span class="badge">${item.nombre}</span>
                 <h4>${item.nombre}</h4>
                 <p><strong>Precio:</strong> ${item.precio}€</p>
-                <p>Stock: ${item.stock}</p>
+                <span>Stock</span><p id="stock-num-${item.id}">${item.stock}</p>
                 <span class="oferr">${item.oferta ? "¡EN OFERTA!" : "Precio habitual"}</span>
                 </div>`;
     });
@@ -144,11 +151,11 @@ btnFind.addEventListener('click', function () {
             let html = ``; 
 
             //Declaramos html + creamos card
-            html += `<div class="card"onclick="addUserList(${objeto.id}); buyUser(${objeto.precio})">
+            html += `<div class="card" onclick="addUserList(${objeto.id}); buyUser(${objeto.precio})" data-id=${objeto.id}>
             <span class="badge">${objeto.categoria}</span>
             <h4>${objeto.nombre}</h4>
             <p><strong>Precio:</strong> ${objeto.precio}€</p>
-            <p>Stock: ${objeto.stock}</p>
+            <span>Stock</span><p id="stock-num-${objeto.id}">${objeto.stock}</p>
              <span class="oferr">${objeto.oferta ? "¡EN OFERTA!" : "Precio habitual"}</span>
             </div>`;
 
@@ -167,6 +174,24 @@ btnFind.addEventListener('click', function () {
 
 });
 
+function stockItemsCatalog(id) {
+    // 1. Buscamos el objeto en el array para bajar el stock en la "lógica"
+    let itemData = catalogo.find(item => item.id == id);
+    
+    if (itemData.stock > 0) {
+        itemData.stock--;
+
+        // 2. SEÑALAMOS el elemento específico del HTML
+        // Construimos el ID dinámicamente: si id es 5, buscará "stock-num-5"
+        const elSotckVisual = document.getElementById(`stock-num-${id}`);
+
+        // 3. CAMBIAMOS solo el contenido de ese elemento
+        if (elSotckVisual) {
+            elSotckVisual.textContent = itemData.stock;
+        }
+    }
+}
+
 //Filtramos por Verduras
 btnFilter.addEventListener('click', function () {
     // 1. Guardamos el resultado del filtro en una nueva variable
@@ -184,11 +209,11 @@ btnFilter.addEventListener('click', function () {
     btnOcultar.style.cssText = `display:block`;
     // 4. Recorremos el nuevo array filtrado, NO el catálogo original
     verduras.forEach(item => {
-        html += `<div class="card" onclick="addUserList(${item.id}); buyUser(${item.precio})">
+        html += `<div class="card" onclick="addUserList(${item.id}); buyUser(${item.precio})" data-id=${item.id}>
             <span class="badge">${item.categoria}</span>
             <h4>${item.nombre}</h4>
             <p><strong>Precio:</strong> ${item.precio}€</p>
-            <p>Stock: ${item.stock}</p>
+            <span>Stock</span><p id="stock-num-${item.id}">${item.stock}</p>
              <span class="oferr">${item.oferta ? "¡EN OFERTA!" : "Precio habitual"}</span>
             </div>`;
     });
@@ -216,11 +241,11 @@ btnOferta.addEventListener('click', function () {
 
     // 4. Recorremos 'listaOfertas' (el array que creamos en el paso 1)
     listaOfertas.forEach(item => {
-        html += `<div class="card" onclick="addUserList(${item.id}); buyUser(${item.precio})">
+        html += `<div class="card" onclick="addUserList(${item.id}); buyUser(${item.precio})" data-id=${item.id}>
             <span class="badge">${item.categoria}</span>
             <h4>${item.nombre}</h4>
             <p><strong>Precio:</strong> ${item.precio}€</p>
-            <p>Stock: ${item.stock}</p>
+            <span>Stock</span><p id="stock-num-${item.id}">${item.stock}</p>
              <span class="oferr">¡EN OFERTA!</span>
             </div>`;
     });
@@ -247,12 +272,9 @@ btnListUser.addEventListener('click',function () {
    let html = ``;
    list.forEach(item=>{
          html += `<div class="card">
-            <span class="badge">${item.categoria}</span>
             <h4>${item.nombre}</h4>
             <p><strong>Precio:</strong> ${item.precio}€</p>
-            <p>Stock: ${item.stock}</p>
             <p>Cantidad: ${item.cantidad}</p>
-             <span class="oferr">¡EN OFERTA!</span>
             </div>`;
    }); 
 

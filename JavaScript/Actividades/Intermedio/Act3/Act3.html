@@ -9,6 +9,8 @@
 
 <body>
 
+   <div style="display: flex; align-items: flex-start; gap: 20px; max-width: 1300px; margin: 0 auto;">
+
     <div class="container">
         <h2>🛒 Gestor de Inventario</h2>
         <input type="text" id="inputBusqueda" placeholder="Nombre del producto (ej: Tomate)">
@@ -18,32 +20,21 @@
         <button id="btnOfertas">Ofertas</button>
         <button id="btnocultar">Ocultar Productos</button>
         <button id="search">Buscar</button>
-        <div id="display" class="result-box">
-
-        </div>
+        <div id="display" class="result-box"></div>
     </div>
 
     <aside class="sidebar">
         <div class="widget">
-            <h3>🛒 Carrito</h3>
+            <h3>Carrito</h3>
             <p>Items escogidos: <span id="contadorCarrito" class="count-value"></span></p>
             <p>Compra total: <span id="bill" class="count-value"></span>&nbsp;€</p>
         </div>
         <button id="list-User">Ver Compra</button>
         <button id="list-delete">Ocultar compra</button>
-        <div id="list" class="result-box">
-        
-        </div>
-        </div>
+        <div id="list" class="result-box"></div>
     </aside>
 
-    <!--<div class="card">
-                <span class="badge">${v.categoria}</span>
-                <h4>${v.nombre}</h4>
-                <p><strong>Precio:</strong> ${v.precio}€</p>
-                <p>Stock: ${v.stock}</p>
-            </div>
-            -->
+</div>
     <script src="Act3.js"></script>
 </body>
 
