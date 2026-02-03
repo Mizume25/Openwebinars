@@ -1,0 +1,39 @@
+/* Estilos para el cuerpo con las clases que ya definiste */
+.light {
+    background-color: #ffffff;
+    color: #333333;
+    transition: background-color 0.4s;
+}
+
+.dark {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    transition: background-color 0.4s;
+}
+
+/* Estilo para la clase .card */
+.card {
+    border: 1px solid #ccc;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    width: fit-content;
+    margin: 100px auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Estilo para la clase .btn */
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: transparent;
+    color: inherit; /* Hereda el color del body (blanco o negro) */
+}
+
+/* Cambio visual del botón cuando el body es dark */
+body.dark .btn {
+    border-color: #ffffff;
+}
