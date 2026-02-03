@@ -1,4 +1,6 @@
-//Gesto inteligente
+//Gestion inteligente
+//Declaramos variables y constantes
+
 const inputItem = document.getElementById("inputBusqueda");
 const cardisplay = document.getElementById("display");
 const btnShowAll = document.getElementById("btnMostrar");
@@ -7,47 +9,98 @@ const btnFind = document.getElementById("btnBuscar");
 const searchBTN = document.getElementById("search");
 const btnFilter = document.getElementById("btnVerduras");
 const btnOferta = document.getElementById("btnOfertas");
+const billUser = document.getElementById("bill");
+//Arrays de soporte (arrays que guarda el json, arrays de repetidos, arrays de catalogo de usuario)
 let catalogo = [];
+let arrayRepetidos = [];
+let list = [];
 
+//Variables del aside
+const listUser = document.getElementById("list");
+const btnListUser = document.getElementById("list-User");
+const btnDeleteListUser = document.getElementById("list-delete");
 const itemCont = document.getElementById("contadorCarrito");
 
-// Default: Oculta Input, boton ocultat + cards
+// Default: Oculta botones default
 (function () {
     itemCont.textContent = 0;
     searchBTN.style.cssText = `display:none;`;
     inputItem.style.cssText = `display:none;`;
     btnOcultar.style.cssText = `display:none`;
+    btnDeleteListUser.style.cssText = `display:none`;
+    billUser.textContent = 0;
     console.log("Input y Button escondidos");
-    cardisplay.style.cssText = `display:none;`;
     console.log("Cards escondidos");
 }());
-let count = 0;
+
+//Contador de items
+let count = 0; 
+
+//FUNCION: Contador de items globales
 function CountItems() {
-    count++;
+    count++; // Modifica la variable global directamente
     itemCont.textContent = count;
     console.log("Total en carrito:", count);
 }
 
+//FUNCION: Agrega objetos y cuenta repetidos
+function addUserList(id) {
+    //Transformamos en objeto 1 objeto del catalogode objetos (productos)
+    const obj = catalogo.find(item => item.id == id);
+
+    //Comprobamos que este no estereptido
+    if (arrayRepetidos.some(idRepetido => idRepetido == id)) {
+        
+        //Si lo esta buscaremos el item
+        const itemEnCarrito = list.find(item => item.id == id);
+        itemEnCarrito.cantidad++; //Aumetamos cantidad
+        
+        //Imprimimos resultado
+        console.log("Cantidad aumentada:", itemEnCarrito.nombre, itemEnCarrito.cantidad);
+
+    } else {
+        //Si no lo estas
+
+        //Agregamos una entrada e inicializamos
+        obj.cantidad = 1;
+        
+        //Agregar objeto al carrito
+        list.push(obj);
+        
+        //agregamos valor
+        arrayRepetidos.unshift(id);
+        
+        //Imprimimos resultado
+        console.log("Item nuevo guardado en el carrito");
+    }
+    
+    //Funcion que cuenta items
+    CountItems(); 
+}
+
+//FETCH: Lee archivo JSON y guarda en el array local todos los objetos
 fetch("Act3.json").then(answer => {
     if (!answer.ok) throw new Error('No se pudo cargar el archivo');
     return answer.json();
-
+//En caso de que no escribe un error
 }).then(response => {
-    catalogo = response;
+    catalogo = response; // Guarda el array
     console.log("Variables guardadas en local");
 }).catch(err => {
-    console.log(err);
+    console.log(err); //Imprime error catch
 });
 
-
-
-//Muestra los cards de grid
+let total = 0;
+function buyUser(price) {
+    total += price
+    billUser.textContent = total.toFixed(2);
+}
+// Boton que muestra todos los cards
 btnShowAll.addEventListener('click', function () {
-    cardisplay.style.cssText = `display:grid;`;
     console.log("Mostrar productos");
-    let html = ``;
-    catalogo.forEach(item => {
-        html += `<div class="card" onclick="CountItems(count)">
+    let html = ``; //Declaramos html
+    catalogo.forEach(item => { //Foeach
+        html += `<div class="card" onclick="addUserList(${item.id}); buyUser(${item.precio})">
                 <span class="badge">${item.nombre}</span>
                 <h4>${item.nombre}</h4>
                 <p><strong>Precio:</strong> ${item.precio}€</p>
@@ -55,39 +108,43 @@ btnShowAll.addEventListener('click', function () {
                 <span class="oferr">${item.oferta ? "¡EN OFERTA!" : "Precio habitual"}</span>
                 </div>`;
     });
-    cardisplay.innerHTML = html;
-    btnOcultar.style.cssText = `display:block`;
+    cardisplay.innerHTML = html; //Inyectamos html
+    btnOcultar.style.cssText = `display:block`; // Desbloqueamos boton de ocultar
 
 });
 
 
-//Oculata el boton y el display de los cards
+//Boton de Ocultar Items
 btnOcultar.addEventListener('click', function () {
-    cardisplay.innerHTML = "";
-    console.log("Borrar productos");
-    btnOcultar.style.cssText = `display:none`;
+    cardisplay.innerHTML = ""; //Limpia html de cards
+    console.log("Borrar productos"); // Imprime
+    btnOcultar.style.cssText = `display:none`; // Y se borra a si mismo (solo esta disponible si haces 1 accion)
 });
 
 
 //Boton que filtra 1 solo elemento que busque el usuario
 btnFind.addEventListener('click', function () {
-    inputItem.style.cssText = `display:block;`;
-    searchBTN.style.cssText = `display:block;`;
+    inputItem.style.cssText = `display:block;`; //Abre el input para buscar
+
+    searchBTN.style.cssText = `display:block;`; //Abre el boton para buscar elementos
 
     searchBTN.addEventListener('click', function () {
         let producto = inputItem.value;
         const objeto = catalogo.find(item => item.nombre == producto);
 
-        if (inputItem.value == "") alert("No puedes pasar valores vacios")
+        //Devuelve una alerta si hay valores vacios
+        if (inputItem.value == "") return alert("No puedes pasar valores vacios")
+        
+        //Si el objeto no se enucentra en el JSON
         if (!objeto) {
             alert("No se ha encontrado el producto");
             return
         } else {
-            cardisplay.style.cssText = `display:grid;`;
+            //declaramos html
+            let html = ``; 
 
-            let html = ``;
-
-            html += `<div class="card" onclick="CountItems(count)">
+            //Declaramos html + creamos card
+            html += `<div class="card"onclick="addUserList(${objeto.id}); buyUser(${objeto.precio})">
             <span class="badge">${objeto.categoria}</span>
             <h4>${objeto.nombre}</h4>
             <p><strong>Precio:</strong> ${objeto.precio}€</p>
@@ -95,9 +152,11 @@ btnFind.addEventListener('click', function () {
              <span class="oferr">${objeto.oferta ? "¡EN OFERTA!" : "Precio habitual"}</span>
             </div>`;
 
-            btnOcultar.style.cssText = `display:block`;
-            cardisplay.innerHTML = html;
-            inputItem.value = " ";
+            btnOcultar.style.cssText = `display:block`; //Activamos boton de ocultar
+
+            cardisplay.innerHTML = html; // inyectamos html
+
+            inputItem.value = " "; //limpiamos input
 
 
         }
@@ -107,7 +166,8 @@ btnFind.addEventListener('click', function () {
 
 
 });
-//Filtrar por verduras
+
+//Filtramos por Verduras
 btnFilter.addEventListener('click', function () {
     // 1. Guardamos el resultado del filtro en una nueva variable
     const verduras = catalogo.filter(item => item.categoria == "verdura");
@@ -124,7 +184,7 @@ btnFilter.addEventListener('click', function () {
     btnOcultar.style.cssText = `display:block`;
     // 4. Recorremos el nuevo array filtrado, NO el catálogo original
     verduras.forEach(item => {
-        html += `<div class="card" onclick="CountItems(count)">
+        html += `<div class="card" onclick="addUserList(${item.id}); buyUser(${item.precio})">
             <span class="badge">${item.categoria}</span>
             <h4>${item.nombre}</h4>
             <p><strong>Precio:</strong> ${item.precio}€</p>
@@ -156,7 +216,7 @@ btnOferta.addEventListener('click', function () {
 
     // 4. Recorremos 'listaOfertas' (el array que creamos en el paso 1)
     listaOfertas.forEach(item => {
-        html += `<div class="card" onclick="CountItems(count)">
+        html += `<div class="card" onclick="addUserList(${item.id}); buyUser(${item.precio})">
             <span class="badge">${item.categoria}</span>
             <h4>${item.nombre}</h4>
             <p><strong>Precio:</strong> ${item.precio}€</p>
@@ -169,19 +229,37 @@ btnOferta.addEventListener('click', function () {
     cardisplay.innerHTML = html;
 });
 
-let contVerdura = document.getElementById("contVerdura");
-let contFruta = document.getElementById("contFruta");
-let contLacteo = document.getElementById("contLacteo");
-let contCarniceria = document.getElementById("contCarniceria");
-let contPescaderia = document.getElementById("contPescaderia");
-let contDespensa = document.getElementById("contDespensa");
+//Boton que oculta display de lista usuario
+btnDeleteListUser.addEventListener('click',function () {
+    listUser.innerHTML = " ";
+    console.log("Borrar carrito");
+    btnDeleteListUser.style.cssText = `display:none`;
+})
 
-let countV = 0;
-let countF = 0;
-let countL = 0;
-let countC = 0;
-let countP = 0;
-let countD = 0;
+//Boton que muestra carrito de usuario
+btnListUser.addEventListener('click',function () {
+    if (count < 1) {
+        alert('Debes seleccionar productos que mostrar');
+        return
+    } else {
 
+    btnDeleteListUser.style.cssText = `display:block`;
+   let html = ``;
+   list.forEach(item=>{
+         html += `<div class="card">
+            <span class="badge">${item.categoria}</span>
+            <h4>${item.nombre}</h4>
+            <p><strong>Precio:</strong> ${item.precio}€</p>
+            <p>Stock: ${item.stock}</p>
+            <p>Cantidad: ${item.cantidad}</p>
+             <span class="oferr">¡EN OFERTA!</span>
+            </div>`;
+   }); 
+
+   listUser.innerHTML = html;
+
+   }
+
+});
 
 
