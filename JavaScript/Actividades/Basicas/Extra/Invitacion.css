@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    overflow: hidden;
+}
+
+body {
+    background-image: url("IMG/Fondo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 12%;
+    color: black;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.main-container {
+    display: grid;
+    /* Aumentamos asides a 300px y el centro ocupa el resto */
+    grid-template-columns: 300px 1fr 300px; 
+    width: 100%;
+    min-height: 100vh;
+    padding: 0px;
+}
+
+h1{
+    background-color: pink;
+    border-radius: 10px;
+    margin: 0px 140px 0px 140px;
+    padding: 15px 0px 15px 0px;
+    color:rgb(216, 49, 105);
+}
+
+h2{
+    color:rgb(216, 49, 105);
+    font-size: 1.5rem;
+}
+
+/* Paneles laterales más prominentes */
+.side-panel {
+    background-image: url("IMG/Turtle3.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center bottom; /* Para que la tortuga empiece desde abajo en el centro */
+    transition: 3s ease-in-out 3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0px;
+    color: rgba(255, 255, 255, 0.5);
+
+    border-right: 1px solid rgba(0,0,0,0.05); /* Si es el aside izquierdo */
+    border-left: 1px solid rgba(0,0,0,0.05);  /* Si es el aside derecho */
+    
+   /* Animación más larga para que sea "suave" (12 segundos) */
+    animation: turtleFloatFull 20s ease-in-out infinite alternate;
+}
+
+/* Definición de la animación */
+@keyframes turtleFloatFull {
+    0%   { transform: translateY(0) rotate(0deg); }
+    10%  { transform: translateY(-10vh) rotate(2deg); }
+    20%  { transform: translateY(-20vh) rotate(-2deg); }
+    30%  { transform: translateY(-30vh) rotate(3deg); }
+    40%  { transform: translateY(-40vh) rotate(-3deg); }
+    50%  { transform: translateY(-50vh) rotate(0deg); } /* Mitad de camino */
+    60%  { transform: translateY(-60vh) rotate(3deg); }
+    70%  { transform: translateY(-70vh) rotate(-3deg); }
+    80%  { transform: translateY(-80vh) rotate(2deg); }
+    90%  { transform: translateY(-90vh) rotate(-2deg); }
+    100% { transform: translateY(-100vh) rotate(0deg); } /* Arriba del todo */
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    align-items: center; /* Centra la card horizontalmente */
+}
+
+/* Header con mayor presencia */
+.main-header {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.07);
+    padding: 60px 0px 60px 0px; /* Aumentamos el tamaño interno */
+    text-align: center;
+}
+
+/* Card central con tamaño reducido (menguado) */
+.glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    
+    padding: 30px;
+    width: 100%;
+    max-width: 650px; /* Limitamos el ancho para que se vea más pequeña */
+    height: 360px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    position: relative; 
+    overflow: hidden; 
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    padding: 35px;
+}
+
+button {
+    padding: 5px 5px;
+    border: 2px solid #fb5b76;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.15);
+    color:rgb(216, 49, 105);
+    background-color: pink;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 150px;
+    font-weight: bold;
+
+}
+
+button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+button + button{
+    margin-top: 15px;
+}
+
+/* Imagen circular */
+.image-placeholder {
+    width: 240px;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; 
+    transition: background-image 0.5s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+
+#NO{
+    transition: 6s ease-in-out, opacity 6s ease-in-out;
+}
+
+#suplicar{
+    font-size: smaller;
+}
