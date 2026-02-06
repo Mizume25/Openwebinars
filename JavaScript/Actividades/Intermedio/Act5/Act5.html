@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VanguardMarket - Tu Supermercado Online</title>
+    <link rel="stylesheet" href="Act5.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor inteligente 2</title>
+    <link rel="stylesheet" href="Act5.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-logo">
+            <i class="fas fa-boxes"></i>
+            <span>STOCK<span>MASTER</span> v3.0</span>
+        </div>
+        <div class="header-stats">
+            <div class="stat-pill">
+                <span class="label">SISTEMA:</span>
+                <span class="status online">ONLINE</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="app-layout">
+        <aside class="control-panel">
+            <section class="panel-section">
+                <h3><i class="fas fa-search"></i> Búsqueda</h3>
+                <div class="search-group">
+                    <input type="text" id="inputBusqueda" placeholder="Referencia o nombre...">
+                    <button id="search" class="btn-primary">Ejecutar Consulta</button>
+                </div>
+            </section>
+
+            <section class="panel-section">
+                <h3><i class="fas fa-filter"></i> Filtros de Inventario</h3>
+                <div class="action-stack">
+                    <button id="btnMostrar" class="btn-secondary"><i class="fas fa-list"></i> Catalogo </button>
+                    <h3><i class="fas fa-filter"></i> Categoria</h3>
+
+                    <select name="Category" id="SelectCategory">
+                        <option value="0">Todos</option>
+                        <option value="1">Verduras</option>
+                        <option value="2">Carne</option>
+                        <option value="3">Laceteos</option>
+                        <option value="4">Pescado</option>
+                        <option value="5">Despensa</option>
+                    </select>
+                    <h3><i class="fas fa-filter"></i> Precio</h3>
+                    <select name="Price" id="SelectPrice">
+                        <option value="order-gen">Predeterminado</option>
+                        <option value="order-asc">Bajo - Alto </option>
+                        <option value="order-desc">Alto - Bajo</option>
+                        
+                    </select>
+                    <button id="btnOfertas" class="btn-accent" value="SI"><i class="fas fa-tag"></i> </button>
+                    <button id="btnocultar" class="btn-danger"></i>Reiniciar</button>
+                </div>
+            </section>
+
+            <section class="panel-section cart-summary">
+                <h3><i class="fas fa-file-invoice-dollar"></i> Salida de Almacén</h3>
+                <div class="billing-data">
+                    <div class="data-row">
+                        <span>Unidades:</span>
+                        <span id="contadorCarrito" class="value"></span>
+                    </div>
+                    <div class="data-row total">
+                        <span>VALOR TOTAL:</span>
+                        <span class="value"><span id="bill"></span>€</span>
+                    </div>
+                </div>
+                <div class="cart-actions">
+                    <button id="list-User" class="btn-confirm"></button>
+                    <button id="list-delete" class="btn-danger-outline">Vaciar</button>
+                </div>
+                <div id="list" class="mini-cart-display"></div>
+            </section>
+        </aside>
+
+        <main class="data-display">
+            <header class="display-header">
+                <h2>Panel de Visualización de Stock</h2>
+                <div class="display-mode">
+                    <span class="mode-active">Grid View</span>
+                </div>
+            </header>
+            
+            <div id="display" class="inventory-grid">
+                <div class="empty-state">
+                    <i class="fas fa-box-open"></i>
+                    <p>Bienvenido al gestor de inventario: Ejecute una consulta para iniciar</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!--// Dentro de tus funciones de filtrado o mostrar todo:
+html += `
+<div class="card" onclick="addUserList(${item.id}); buyUser(${item.precio})" data-id=${item.id}>
+    <span class="badge">${item.nombre}</span>
+    <h4>${item.nombre}</h4>
+    <p><strong>Precio:</strong> ${item.precio}€</p>
+    <div class="stock-container">
+        <span>Stock:</span>
+        <p id="stock-num-${item.id}">${item.stock}</p>
+    </div>
+    <span class="oferr">${item.oferta ? "¡EN OFERTA!" : "Precio habitual"}</span>
+</div>`;-->
+
+    <script src="Act5.js"></script>
+</body>
+</html>
+
+   

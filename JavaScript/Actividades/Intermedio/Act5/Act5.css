@@ -1,0 +1,364 @@
+:root {
+    --primary: #2563eb;
+    --danger: #dc2626;
+    --success: #16a34a;
+    --accent: #f59e0b;
+    --bg-app: #0f172a;
+    --bg-panel: #1e293b;
+    --bg-client:#ad9fc0;
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
+    --border: #334155;
+    --font-main: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-app);
+    color: var(--text-main);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+.main-header {
+    background: #000;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--primary);
+}
+
+.header-logo {
+    font-weight: 800;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-logo span span { color: var(--primary); }
+
+.stat-pill {
+    background: #1e293b;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    border: 1px solid var(--border);
+}
+
+.status.online { color: var(--success); font-weight: bold; }
+
+/* LAYOUT */
+.app-layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* SIDEBAR CONTROL */
+.control-panel {
+    width: 350px;
+    background: var(--bg-panel);
+    border-right: 1px solid var(--border);
+    padding: 1.5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.panel-section h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+    margin-top: 3px;
+    letter-spacing: 1px;
+}
+
+/* BOTONES TÉCNICOS */
+button {
+    font-family: var(--font-main);
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    
+}
+
+.btn-primary { background: var(--primary); color: white; }
+.btn-secondary { background: #334155; color: white; }
+.btn-accent { background: var(--accent); color: #000; margin-top: 15px;}
+.btn-danger { background: var(--danger); color: white; margin-top: 15px;}
+.btn-confirm { background: var(--success); color: white; width: 100%; margin-top: 10px; }
+.btn-user{background-color: rgb(97, 176, 255);color: white; width: 100%; margin-top: 10px;}
+
+button:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* INPUTS */
+input[type="text"] {
+    width: 100%;
+    background: #0f172a;
+    border: 1px solid var(--border);
+    padding: 12px;
+    color: white;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+/* DATA DISPLAY AREA */
+.data-display {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
+    background-size: 30px 30px; /* Grid sutil de fondo */
+}
+
+.display-header {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* GRID DE INVENTARIO */
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+/* CARDS PROFESIONALES */
+.card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    
+    border-radius: 8px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--primary);
+    font-size: 0.6rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.card h4 {
+    margin: 1rem 0 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.card .price-tag {
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    color: var(--success);
+    display: block;
+    margin: 10px 0;
+}
+
+.stock-indicator {
+    background: #0f172a;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.stock-indicator b { color: var(--accent); }
+
+.oferr-tag {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.7rem;
+    color: var(--accent);
+    text-align: center;
+    border: 1px solid var(--accent);
+    padding: 2px;
+}
+
+/* CARRITO/REPORTE EN LATERAL */
+.mini-cart-display {
+    margin-top: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.billing-data {
+    background: #0f172a;
+    padding: 1rem;
+    border-radius: 6px;
+}
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.data-row.total {
+    border-top: 1px solid var(--border);
+    margin-top: 10px;
+    padding-top: 10px;
+    font-weight: bold;
+    color: var(--success);
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 100px;
+    color: var(--text-dim);
+}
+
+.empty-state i { font-size: 3rem; margin-bottom: 1rem; opacity: 0.5; }
+
+button + button{
+    margin-top: 10px;
+}
+
+/* Contenedor Principal del Inventario */
+#display {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+/* Estilo de la Card */
+.card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left; /* Alineación profesional a la izquierda */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: #2563eb; /* Color azul corporativo */
+}
+
+/* Badge Superior (Categoría/Nombre) */
+.badge {
+    display: inline-block;
+    background: #f1f5f9;
+    color: #475569;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.card h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.card p {
+    margin: 4px 0;
+    font-size: 0.95rem;
+    color: #64748b;
+}
+
+/* Contenedor de Stock */
+.stock-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f8fafc;
+    padding: 8px;
+    border-radius: 8px;
+    margin: 12px 0;
+}
+
+.stock-container span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #94a3b8;
+}
+
+.stock-container p {
+    margin: 0;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+/* Etiqueta de Oferta */
+.oferr {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 6px;
+    border-radius: 6px;
+    text-align: center;
+    margin-top: 10px;
+    transition: background 0.3s;
+    color: black;
+}
+#SelectCategory,#SelectPrice{
+    font-family: var(--font-main);
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+select + button{
+    margin-bottom: 10px;
+}
+
+#user-delete{
+    background-color: red;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+}
+
