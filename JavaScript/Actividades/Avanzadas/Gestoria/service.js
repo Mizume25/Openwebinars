@@ -1,5 +1,6 @@
 //Logica de filtrado
 export const studentTable = document.getElementById("table-body");
+
 //FUNCION: Mostrar optativas
 export const changeOPT = async (e, list) => {
     // 1. Aplanamos el objeto (Ahora 'todos' es un array de alumnos)
@@ -47,6 +48,47 @@ function decorateOPT(e) {
         botonPulsado.classList.add('active');
         botonPulsado.classList.remove('bg-white'); // El activo no debe ser blanco
     }
+}
+
+//FUNCION: Ordenar lista
+export const orderStudent = async (e,list) => {
+      //Pasamos la lista a un array temporal
+      let tempArray = list;
+      mediaStudent(tempArray);
+
+      let orderBy;
+
+      switch (e.target.value) {
+        case "mates":
+          orderBy = tempArray.sort((a, b) => a.notas.mates - b.notas.mates);
+          break;
+        case "lengua":
+          orderBy = tempArray.sort((a, b) => a.notas.lengua - b.notas.lengua);
+          break;
+        case "ciencias":
+          orderBy = tempArray.sort((a, b) => a.notas.ciencias - b.notas.ciencias);
+          break;
+        case "historia":
+          orderBy = orderBy = tempArray.sort((a, b) => a.notas.historia - b.notas.historia);
+          break;
+        case "mediaGeneral":
+          orderBy = orderBy = tempArray.sort((a, b) => a.notaGeneral - b.notaGeneral);
+        default:
+          break;
+      }
+
+      return orderBy;
+
+
+}
+
+//FUNCION: Obtener media alumnos
+function mediaStudent(list) {
+    list.forEach((p) =>{
+    let suma = p.notas.mates + p.notas.lengua + p.notas.ciencias + p.notas.historia + p.optativas[0].nota + p.optativas[1].nota;
+    let notGEn = (suma / 6).toFixed(1);
+    p.notaGeneral = notGEn;
+    })
 }
 
 

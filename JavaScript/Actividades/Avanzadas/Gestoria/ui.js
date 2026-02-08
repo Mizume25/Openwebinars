@@ -1,9 +1,12 @@
+
 //Renderizado Web
 export const studentTable = document.getElementById("table-body");
 export const displayNav = document.querySelectorAll("#mainNav .nav-link");
 export const headRow = document.querySelector(".table-dark tr");
 export const addStudentBTN = document.getElementById("btn-add-ui");
 export const formContent = document.getElementById("form-container");
+export const orderRows = document.getElementById("filter-materia");
+
 //HTML
 studentTable.innerHTML = " ";
 let suma = 0;
@@ -129,6 +132,9 @@ export function nullOPT() {
 
 
 export const activeBTNaddStudent = async () => {
+
+      
+
       let html = `<div class="card border-success">
     <div class="card-header bg-success text-white">Nuevo Registro</div>
     <div class="card-body">
@@ -141,7 +147,7 @@ export const activeBTNaddStudent = async () => {
             </select>
             <input type="date" class="form-control mb-3" title="Fecha Matriculación">
             <button type="submit" class="btn btn-success w-100">Registrar Estudiante</button>
-            <button class="btn-close  w-100 bg-danger" id="closeForm" onclick="closeForm()"></button>
+            <button class="btn btn-danger w-100 mt-2" id="closeForm">Cerrar Formulario</button>
         </form>
     </div>
 </div>`
@@ -149,6 +155,31 @@ export const activeBTNaddStudent = async () => {
   formContent.innerHTML = html;
 }
 
-export const closeForm = async () => {
-    formContent.innerHTML = "";
+export const activeBTNeditStudent = async () => {
+
+    let html = `<div class="card border-warning">
+    <div class="card-header bg-warning text-dark">Modificar Registro</div>
+    <div class="card-body">
+        <form id="form-edit">
+            <input type="text" class="form-control mb-2" id="edit-nombre" value="Datos actuales...">
+            <input type="text" class="form-control mb-2" id="edit-apellido">
+            <select class="form-select mb-2" id="edit-curso">
+                <option value="1">1º Curso</option>
+                <option value="2">2º Curso</option>
+            </select>
+            <input type="date" class="form-control mb-2" id="edit-fecha">
+            <div class="form-floating mb-3">
+                <textarea class="form-control" placeholder="Describa la incidencia" id="edit-incidencia" style="height: 100px"></textarea>
+                <label for="edit-incidencia">Abrir Incidencia</label>
+            </div>
+            <button type="submit" class="btn btn-warning w-100">Guardar Cambios</button>
+            <button class="btn btn-danger w-100 mt-2" id="closeForm">Cerrar Formulario</button>
+        </form>
+    </div>
+</div>`
+
+  formContent.innerHTML = html;
 }
+
+
+
