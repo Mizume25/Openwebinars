@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestoría Estudiantil Pro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="InstitutoWeb.css">
+</head>
+<body class="bg-light">
+
+    <header class="bg-dark text-white py-4 shadow">
+        <h1 class="text-center mb-4">SISTEMA DE GESTIÓN ACADÉMICA</h1>
+        <nav class="container">
+            <ul class="nav nav-pills justify-content-center">
+                <li class="nav-item"><a class="nav-link active" href="#" data-curso="1">1º CURSO</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#" data-curso="2">2º CURSO</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#" data-curso="3">3º CURSO</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#" data-curso="4">4º CURSO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container-fluid my-4">
+        <div class="row">
+            
+            <aside class="col-md-3">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <i class="fas fa-tools me-2"></i>Herramientas
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2 mb-4">
+                            <button class="btn btn-success" id="btn-add-ui"><i class="fas fa-user-plus me-2"></i>Añadir Alumno</button>
+                            <button class="btn btn-warning" id="btn-edit-ui"><i class="fas fa-user-edit me-2"></i>Editar Alumno</button>
+                            <button class="btn btn-danger"><i class="fas fa-user-minus me-2"></i>Eliminar Selección</button>
+                        </div>
+
+                        <hr>
+                        <h6>Filtros Avanzados</h6>
+                        <select class="form-select mb-2" id="filter-materia">
+                            <option value="">Filtrar por Materia...</option>
+                            <option value="mates">Matemáticas</option>
+                            <option value="lengua">Lengua</option>
+                        </select>
+                        <input type="number" class="form-control mb-2" placeholder="Edad mínima...">
+                        <input type="number" class="form-control mb-2" placeholder="Nota mínima...">
+                    </div>
+                </div>
+
+                <div id="form-container" class="shadow-sm">
+                    </div>
+            </aside>
+
+            <section class="col-md-7">
+                <div class="card shadow-sm">
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0" id="main-table">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Alumno</th>
+                                        <th>Edad</th>
+                                        <th>Curso</th>
+                                        <th>Mates</th>
+                                        <th>Lengua</th>
+                                        <th>Ciencias</th>
+                                        <th>Historia</th>
+                                        <th>Opt 1</th>
+                                        <th>Opt 2</th>
+                                        <th>Media</th>
+                                        <th>Incidencias</th>
+                                    </tr>
+                                    
+                                </tr>
+                                </thead>
+                                <tbody id="table-body">
+                                    <!--<tr id="fila-401">
+                                    <td>401</td>
+                                    <td><strong>Alejandro Sánchez</strong></td>
+                                    <td>15</td>
+                                    <td>4º</td>
+                                    <td class="text-danger fw-bold">3.0</td> <td>4.5</td> <td>5.0</td> <td>4.0</td> <td>Teatro (6.0)</td>
+                                    <td>Robótica (5.5)</td>
+                                    <td><span class="badge bg-danger">4.1</span></td> <td>
+                                        <span class="badge bg-warning text-dark">
+                                            <i class="fas fa-exclamation-triangle"></i> Pendiente
+                                        </span>
+                                    </td>-->
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="col-md-2">
+                <div class="card shadow-sm border-info">
+                    <div class="card-header bg-info text-dark">
+                        <i class="fas fa-Layer-group me-2"></i>Grupos Optativos
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group mb-3">
+                            <button class="list-group-item list-group-item-action small">Taller de Teatro</button>
+                            <button class="list-group-item list-group-item-action small">Robótica Avanzada</button>
+                            <button class="list-group-item list-group-item-action small">Coro Polifónico</button>
+                        </div>
+                        <button class="btn btn-outline-info btn-sm w-100">
+                            <i class="fas fa-exchange-alt me-1"></i>Mover de Grupo
+                        </button>
+                    </div>
+                </div>
+                
+            </aside>
+        </div>
+    </main>
+    <!--<div class="card border-success">
+    <div class="card-header bg-success text-white">Nuevo Registro</div>
+    <div class="card-body">
+        <form id="form-create">
+            <input type="text" class="form-control mb-2" placeholder="Nombre" required>
+            <input type="text" class="form-control mb-2" placeholder="Apellidos" required>
+            <select class="form-select mb-2">
+                <option value="1">1º Curso</option>
+                <option value="2">2º Curso</option>
+            </select>
+            <input type="date" class="form-control mb-3" title="Fecha Matriculación">
+            <button type="submit" class="btn btn-success w-100">Registrar Estudiante</button>
+        </form>
+    </div>
+</div>-->
+
+<!--<div class="card border-warning">
+    <div class="card-header bg-warning text-dark">Modificar Registro</div>
+    <div class="card-body">
+        <form id="form-edit">
+            <input type="text" class="form-control mb-2" id="edit-nombre" value="Datos actuales...">
+            <input type="text" class="form-control mb-2" id="edit-apellido">
+            <select class="form-select mb-2" id="edit-curso">
+                <option value="1">1º Curso</option>
+                <option value="2">2º Curso</option>
+            </select>
+            <input type="date" class="form-control mb-2" id="edit-fecha">
+            <div class="form-floating mb-3">
+                <textarea class="form-control" placeholder="Describa la incidencia" id="edit-incidencia" style="height: 100px"></textarea>
+                <label for="edit-incidencia">Abrir Incidencia</label>
+            </div>
+            <button type="submit" class="btn btn-warning w-100">Guardar Cambios</button>
+        </form>
+    </div>
+</div>-->
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
