@@ -200,6 +200,21 @@ export const editBTN = async () => {
 }
 
 
+//FUNCION: Decora panel de Optativas
+export function decorateOPT(e) {
+    const botones = document.querySelectorAll("#optativas .list-group-item");
+    
+    botones.forEach(item => {
+        item.classList.remove('active', 'bg-white'); // Quitamos bg-white para que no brille
+    });
+
+    const botonPulsado = e.target.closest('.list-group-item');
+    if (botonPulsado) {
+        botonPulsado.classList.add('active');
+        botonPulsado.classList.remove('bg-white'); // El activo no debe ser blanco
+    }
+}
+
 
 
 

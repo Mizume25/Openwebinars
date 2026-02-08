@@ -6,6 +6,9 @@ const studentTable = document.getElementById("table-body");
 let modificado = false;
 let form = false;
 let listStudent = [];
+let arrayStudent = [];
+let start;
+let useSection = [true,false,false,false];
 const navLinks = document.querySelectorAll('#mainNav .nav-link');
 const formContent = document.getElementById("form-container");
 const selectOrder = document.getElementById("filter-materia");
@@ -23,7 +26,7 @@ const main = async () => {
     ui.renderT(list.Primero);
 
     listStudent = Object.values(list).flat()
-    
+    arrayStudent = list;
     ui.renderCourse(list);
 
     } catch (error) {
@@ -45,7 +48,39 @@ navMain.addEventListener("click",(e) =>{
     if (e.target.id === "c1" || e.target.id === "c2" || e.target.id === "c3" ||e.target.id === "c4") {
         ui.restoreCol();
         modificado = false;
-
+        selectOrder.value = "general";
+        switch (e.target.id) {
+            case "c1":
+                useSection[0] = true;
+                start = 0;
+                for (let i = (start + 1) % 4; i !== start; i = (i + 1) % 4) {
+                     useSection[i] = false; 
+                }
+                break;
+            case "c2":
+                useSection[1] = true;
+                start = 1;
+                for (let i = (start + 1) % 4; i !== start; i = (i + 1) % 4) {
+                     useSection[i] = false;
+                }
+                break;
+            case "c3":
+                useSection[2] = true;
+                start = 2;
+                for (let i = (start + 1) % 4; i !== start; i = (i + 1) % 4) {
+                    useSection[i] = false; 
+                }
+                break;
+            case "c4":
+                useSection[3] = true;
+                start = 3;
+                for (let i = (start + 1) % 4; i !== start; i = (i + 1) % 4) {
+                     useSection[i] = false;
+                }
+                break;
+            default:
+                break;
+        }
     }
 })
 
@@ -55,16 +90,25 @@ const handleOptClick = (e) => {
         ui.nullNav();    
         ui.modifyCol();  
         modificado = true;
+        
     }   
-    
+    ui.decorateOPT(e);
     const listOPT = sr.filterOPT(e, listStudent);
-    
     ui.renderOPT(listOPT);
 };
 
-document.getElementById("OPT1").addEventListener('click', handleOptClick);
-document.getElementById("OPT2").addEventListener('click', handleOptClick);
-document.getElementById("OPT3").addEventListener('click', handleOptClick);
+document.getElementById("OPT1").addEventListener('click', (e) => {
+    handleOptClick(e);
+    selectOrder.value = "general";
+});
+document.getElementById("OPT2").addEventListener('click', (e) => {
+    handleOptClick(e);
+    selectOrder.value = "general";
+});
+document.getElementById("OPT3").addEventListener('click', (e) => {
+    handleOptClick(e);
+    selectOrder.value = "general";
+});
 
 
 // EVENTO: Abrir Formulario de añadir
@@ -88,6 +132,23 @@ formContent.addEventListener('click', (e) => {
     }
 });
 
+//EVENTO: Ordenar Filas
+selectOrder.addEventListener('change',(e) => {
+  
+    let grado = sr.knowCours(useSection);
+    if (e.target.value == "incidencias") {
+        let newList = sr.incidentsFilter(arrayStudent[grado]);
+        ui.renderT(newList);
+        return
+    }
+    let newList = sr.mediaStudent(arrayStudent[grado]);
+
+        //Convertirmos y ordenamos
+        sr.orderRows(e,newList);
+
+        ui.renderT(newList);
+
+});
 
 
 

@@ -6,7 +6,7 @@ export const filterOPT = (e, list) => {
     const valorSeleccionado = e.target.value; // Capturamos el valor AQUÍ
     const todosLosAlumnos = Object.values(list).flat();
 
-    decorateOPT(e); 
+    
 
     return todosLosAlumnos
         .filter((p) => p.optativas.some(opt => opt.nombre === valorSeleccionado))
@@ -20,21 +20,86 @@ export const filterOPT = (e, list) => {
         });
 };
 
-//FUNCION: Decora panel de Optativas
-function decorateOPT(e) {
-    const botones = document.querySelectorAll("#optativas .list-group-item");
+//FUNCION: Ordena Filas por Categoria
+export const orderRows = (e,list) => {
+    let tempList = list;
+    let orderBY;
+    switch (e.target.value) {
+        case "mates":
+            orderBY = tempList.sort((a,b) => b.notas.mates - a.notas.mates);
+            break;
+        case "lengua":
+            orderBY = tempList.sort((a,b) => b.notas.lengua - a.notas.lengua);
+            break;
+        case "ciencias":
+            orderBY = tempList.sort((a,b) => b.notas.ciencias - a.notas.ciencias);
+            break;
+        case "historia":
+            orderBY = tempList.sort((a,b) => b.notas.lengua - a.notas.lengua);
+            break;
+        case "mediaGeneral":
+            orderBY = tempList.sort((a,b) => b.media - a.media);
+            break;
+        case "nombreAlumno":
+            orderBY = tempList.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            break;
+        case "apellidoAlumno":
+            orderBY = tempList.sort((a, b) => a.apellido.localeCompare(b.apellido));
+            break;
+    }
+
+    return orderBY;
+};
+
+//FUNCION: Calcular media individual
+export const mediaStudent = (list) => {
+    let suma = 0;
+    let notaGen = 0;
+    list.forEach((p) => {
     
-    botones.forEach(item => {
-        item.classList.remove('active', 'bg-white'); // Quitamos bg-white para que no brille
+    //Sumamos valores
+    suma = p.notas.mates + p.notas.lengua + p.notas.ciencias +
+    p.notas.historia + p.optativas[0].nota + p.optativas[1].nota;
+
+    //Guardamos en nueva entrada
+    notaGen = (suma / 6).toFixed(1);
+    p.media = notaGen;
+
     });
 
-    const botonPulsado = e.target.closest('.list-group-item');
-    if (botonPulsado) {
-        botonPulsado.classList.add('active');
-        botonPulsado.classList.remove('bg-white'); // El activo no debe ser blanco
-    }
+    return list;
 }
 
+
+//FUNCION: Saber en que curso estamos
+export const knowCours = (useSection) =>{
+    let position = useSection.indexOf(true);
+
+    let grado = "";
+    switch (position) {
+        case 0:
+            grado = "Primero"
+            break;
+        case 1:
+            grado = "Segundo"
+            break;
+        case 2:
+            grado = "Tercero"
+            break;
+        case 3:
+            grado = "Cuarto"
+            break;
+    }
+
+    return grado;
+}
+
+//FUNCION: Capta lista filtrada
+export const incidentsFilter = (list) =>{
+    let outerList = list.filter((p) => p.incidencias != "Ninguna");
+
+    return outerList;
+}
 
 
 
