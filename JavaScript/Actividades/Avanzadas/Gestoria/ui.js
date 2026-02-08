@@ -59,7 +59,8 @@ export const renderOPT = (listOPT) => {
             <td><strong>${p.nombre}&nbsp;${p.apellido}</strong></td>
             <td>${p.edad}</td>
             <td>${p.curso}</td>
-            <td>${p.notaVisual}</td> <td>
+            <td>${p.notaVisual}</td> 
+            <td>
                 <span class="badge bg-warning text-dark">
                     <i class="fas fa-exclamation-triangle"></i> ${p.incidencias}
                 </span>
@@ -109,6 +110,9 @@ export const modifyCol = async () => {
       headRow.children[i].remove();
     }
   }
+  headRow.children[3].textContent = "Curso"
+  headRow.children[4].textContent = "Nota"
+  
 }
 
 //FUNCION: Restaura Columnas
@@ -214,6 +218,40 @@ export function decorateOPT(e) {
         botonPulsado.classList.remove('bg-white'); // El activo no debe ser blanco
     }
 }
+
+//FUNCION: Renderiza otro select
+export const selectUpdate = () => {
+    
+    orderRows.innerHTML = ""; 
+
+    // Añadimos las opciones de optativas
+    orderRows.add(new Option("General", "general"));
+    orderRows.add(new Option("Primero", "1"));
+    orderRows.add(new Option("Segundo", "2"));
+    orderRows.add(new Option("Tercero", "3"));
+    orderRows.add(new Option("Cuarto", "4"));
+    orderRows.add(new Option("Edad", "edad"));
+    orderRows.add(new Option("Nota", "notaOPT"));
+    orderRows.add(new Option("Incidencias", "incidencias"));
+};
+
+
+export const backSelect = () => {
+   
+    // LIMPIEZA: Volvemos al estado original
+    orderRows.innerHTML = "";
+
+    // Opciones originales
+    orderRows.add(new Option("General", "general"));
+    orderRows.add(new Option("Matemáticas", "mates"));
+    orderRows.add(new Option("Lengua", "lengua"));
+    orderRows.add(new Option("Ciencias", "ciencias"));
+    orderRows.add(new Option("Historia", "historia"));
+    orderRows.add(new Option("Media General", "mediaGeneral"));
+    orderRows.add(new Option("Nombre Alumno", "nombreAlumno"));
+    orderRows.add(new Option("Apellido Alumno", "apellidoAlumno"));
+    orderRows.add(new Option("Incidencias", "incidencias"));
+};
 
 
 

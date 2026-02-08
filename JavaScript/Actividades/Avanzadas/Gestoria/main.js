@@ -9,10 +9,10 @@ let listStudent = [];
 let arrayStudent = [];
 let start;
 let useSection = [true,false,false,false];
-const navLinks = document.querySelectorAll('#mainNav .nav-link');
 const formContent = document.getElementById("form-container");
 const selectOrder = document.getElementById("filter-materia");
 const navMain = document.querySelector(".container");
+const OPTDisplay = document.getElementById("optativas");
 //FUNCION: INICIO
 const main = async () => {
     try {
@@ -47,8 +47,12 @@ const main = async () => {
 navMain.addEventListener("click",(e) =>{
     if (e.target.id === "c1" || e.target.id === "c2" || e.target.id === "c3" ||e.target.id === "c4") {
         ui.restoreCol();
+        if (!modificado) {
+        ui.backSelect(); 
+        selectOrder.value = "general";   
+        }
+        
         modificado = false;
-        selectOrder.value = "general";
         switch (e.target.id) {
             case "c1":
                 useSection[0] = true;
@@ -97,18 +101,18 @@ const handleOptClick = (e) => {
     ui.renderOPT(listOPT);
 };
 
-document.getElementById("OPT1").addEventListener('click', (e) => {
-    handleOptClick(e);
-    selectOrder.value = "general";
+//Evento: Selecciona Optativas
+OPTDisplay.addEventListener('click', (e) =>{
+    if (e.target.id == "OPT1" || e.target.id == "OPT2" || e.target.id == "OPT3") {
+        handleOptClick(e);
+        if (modificado) {
+        ui.selectUpdate();  
+        selectOrder.value = "general";  
+        }
+        selectOrder.value = "general";
+    }
 });
-document.getElementById("OPT2").addEventListener('click', (e) => {
-    handleOptClick(e);
-    selectOrder.value = "general";
-});
-document.getElementById("OPT3").addEventListener('click', (e) => {
-    handleOptClick(e);
-    selectOrder.value = "general";
-});
+
 
 
 // EVENTO: Abrir Formulario de añadir
