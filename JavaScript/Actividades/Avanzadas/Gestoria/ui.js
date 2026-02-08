@@ -1,28 +1,32 @@
 //Renderizado Web
 export const studentTable = document.getElementById("table-body");
+export const displayNav = document.querySelectorAll("#mainNav .nav-link");
+export const headRow = document.querySelector(".table-dark tr");
+export const addStudentBTN = document.getElementById("btn-add-ui");
+export const formContent = document.getElementById("form-container");
+//HTML
+studentTable.innerHTML = " ";
+let suma = 0;
+let notGEn = 0;
+let colorBadge = 0;
+let colorMAT = 0;
+let colorLEN = 0;
+let colorSCI = 0;
+let colorSTR = 0;
 
-//FUNCION: Renderizado Web
+const dataCourse = ["Primero", "Segundo", "Tercero", "Cuarto"];
+//FUNCION: Renderizado de alumnos
 export const inputStudents = async (list) => {
-  studentTable.innerHTML = " ";
-  
   let html = " ";
-  let suma = 0;
-  let notGEn = 0;
-  let colorBadge = 0; 
-  let colorMAT = 0;
-  let colorLEN = 0;
-  let colorSCI = 0;
-  let colorSTR = 0;
-// Acceso manual por índice
-
-    list.forEach((p) => {
+  studentTable.innerHTML = "";
+  list.forEach((p) => {
     suma = p.notas.mates + p.notas.lengua + p.notas.ciencias + p.notas.historia + p.optativas[0].nota + p.optativas[1].nota;
     notGEn = (suma / 6).toFixed(1); // .toFixed(1) para que no salgan 10 decimales
     colorBadge = notGEn >= 5 ? "bg-success" : "bg-danger";
-    colorMAT = p.notas.mates >= 5 ? "text-success":"text-danger";
-    colorLEN = p.notas.lengua >= 5 ? "text-success":"text-danger";
-    colorSCI = p.notas.ciencias >= 5 ? "text-success":"text-danger";
-    colorSTR = p.notas.historia >= 5 ? "text-success":"text-danger";
+    colorMAT = p.notas.mates >= 5 ? "text-success" : "text-danger";
+    colorLEN = p.notas.lengua >= 5 ? "text-success" : "text-danger";
+    colorSCI = p.notas.ciencias >= 5 ? "text-success" : "text-danger";
+    colorSTR = p.notas.historia >= 5 ? "text-success" : "text-danger";
     html += `<tr id="fila-${p.id}">
              <td>${p.id}</td>
              <td><strong>${p.nombre}&nbsp;${p.apellido} </strong></td>
@@ -43,3 +47,108 @@ export const inputStudents = async (list) => {
   studentTable.innerHTML = html;
 
 };
+
+
+//STYLE
+
+//FUNCION: Canviar color Nav
+export const changeCourse = (list) => {
+  displayNav.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      nullOPT();
+      
+
+      displayNav.forEach(item => {
+        item.classList.remove('active');
+        item.classList.add('text-white');
+      });
+
+
+      link.classList.add('active');
+      link.classList.remove('text-white');
+
+      const indice = parseInt(link.dataset.curso) - 1;
+
+
+      const cursoNombre = dataCourse[indice];
+
+      inputStudents(list[cursoNombre]);
+
+      console.log("Estilo cambiado para:", link.textContent);
+    });
+  });
+};
+
+//FUNCION: Modifica las columnas
+export const modifyCol = async () => {
+  for (let i = 9; i >= 4; i--) {
+    if (headRow.children[i]) {
+      headRow.children[i].remove();
+    }
+  }
+}
+
+//FUNCION: Restaura Columnas
+export const restoreCol = () => {  
+    // Sobreescribimos todo el contenido de la fila de cabecera
+    headRow.innerHTML = `
+        <th>ID</th>
+        <th>Alumno</th>
+        <th>Edad</th>
+        <th>Curso</th>
+        <th>Mates</th>
+        <th>Lengua</th>
+        <th>Ciencias</th>
+        <th>Historia</th>
+        <th>Opt 1</th>
+        <th>Opt 2</th>
+        <th>Media</th>
+        <th>Incidencias</th>
+    `;
+};
+
+// En ui.js
+export const nullNav = () => {
+    displayNav.forEach(item => {
+        item.classList.remove('active');
+        item.classList.add('text-white');        
+    });
+};
+
+export function nullOPT() {
+    // Buscamos los botones justo en el momento de limpiar
+    const botones = document.querySelectorAll("#optativas .list-group-item");
+    botones.forEach(item => {
+        item.classList.remove('active');
+        // OJO: Si añades bg-white aquí, asegúrate de que decorateOPT lo quite
+        item.classList.add('bg-white'); 
+    });
+}
+
+
+export const activeBTNaddStudent = async () => {
+      let html = `<div class="card border-success">
+    <div class="card-header bg-success text-white">Nuevo Registro</div>
+    <div class="card-body">
+        <form id="form-create">
+            <input type="text" class="form-control mb-2" placeholder="Nombre" required>
+            <input type="text" class="form-control mb-2" placeholder="Apellidos" required>
+            <select class="form-select mb-2">
+                <option value="1">1º Curso</option>
+                <option value="2">2º Curso</option>
+            </select>
+            <input type="date" class="form-control mb-3" title="Fecha Matriculación">
+            <button type="submit" class="btn btn-success w-100">Registrar Estudiante</button>
+            <button class="btn-close  w-100 bg-danger" id="closeForm" onclick="closeForm()"></button>
+        </form>
+    </div>
+</div>`
+
+  formContent.innerHTML = html;
+}
+
+export const closeForm = async () => {
+    formContent.innerHTML = "";
+}

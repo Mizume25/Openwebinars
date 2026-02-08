@@ -13,7 +13,7 @@
     <header class="bg-dark text-white py-4 shadow">
         <h1 class="text-center mb-4">SISTEMA DE GESTIÓN ACADÉMICA</h1>
         <nav class="container">
-            <ul class="nav nav-pills justify-content-center">
+            <ul class="nav nav-pills justify-content-center" id="mainNav">
                 <li class="nav-item"><a class="nav-link active" href="#" data-curso="1">1º CURSO</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="#" data-curso="2">2º CURSO</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="#" data-curso="3">3º CURSO</a></li>
@@ -40,9 +40,15 @@
                         <hr>
                         <h6>Filtros Avanzados</h6>
                         <select class="form-select mb-2" id="filter-materia">
-                            <option value="">Filtrar por Materia...</option>
+                            <option value="">Filtrar por...</option>
                             <option value="mates">Matemáticas</option>
                             <option value="lengua">Lengua</option>
+                            <option value="ciencias">Ciencias</option>
+                            <option value="historia">Historia</option>
+                            <option value="mediaGeneral">Media General</option>
+                            <option value="nombreAlumno">Nombre Alumno</option>
+                            <option value="apellidoAlumno">Apellido Alumno</option>
+                            <option value="apellidoAlumno">Incidencias</option>
                         </select>
                         <input type="number" class="form-control mb-2" placeholder="Edad mínima...">
                         <input type="number" class="form-control mb-2" placeholder="Nota mínima...">
@@ -102,10 +108,10 @@
                         <i class="fas fa-Layer-group me-2"></i>Grupos Optativos
                     </div>
                     <div class="card-body">
-                        <div class="list-group mb-3">
-                            <button class="list-group-item list-group-item-action small">Taller de Teatro</button>
-                            <button class="list-group-item list-group-item-action small">Robótica Avanzada</button>
-                            <button class="list-group-item list-group-item-action small">Coro Polifónico</button>
+                        <div class="list-group mb-3" id="optativas">
+                            <button class="list-group-item list-group-item-action small" value="Teatro" id="OPT1">Taller de Teatro</button>
+                            <button class="list-group-item list-group-item-action small" value="Robótica" id="OPT2">Robótica Avanzada</button>
+                            <button class="list-group-item list-group-item-action small" value="Coro" id="OPT3">Coro Polifónico</button>
                         </div>
                         <button class="btn btn-outline-info btn-sm w-100">
                             <i class="fas fa-exchange-alt me-1"></i>Mover de Grupo
