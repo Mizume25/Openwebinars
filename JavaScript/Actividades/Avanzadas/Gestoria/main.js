@@ -1,8 +1,7 @@
 //Importamos modulos
-import { inputStudents, changeCourse, modifyCol, nullNav, restoreCol,
-     activeBTNaddStudent,activeBTNeditStudent} from './ui.js'; 
-import { startGestory } from './api.js';
-import { changeOPT,orderStudent } from './service.js';
+import * as ui from './ui.js'; 
+import * as api from './api.js'; 
+import * as sr from './service.js'
 const studentTable = document.getElementById("table-body");
 let modificado = false;
 let form = false;
@@ -10,32 +9,22 @@ let listStudent = [];
 const navLinks = document.querySelectorAll('#mainNav .nav-link');
 const formContent = document.getElementById("form-container");
 const selectOrder = document.getElementById("filter-materia");
+const navMain = document.querySelector(".container");
 //FUNCION: INICIO
 const main = async () => {
     try {
     //Inicializamos datos
-    const list = await startGestory();
+    const list = await api.startGestory();
 
     //Comprobar
     if (!list) throw new Error ("No se ha recibido alumnos"); 
     
     
-    inputStudents(list.Primero);
+    ui.renderT(list.Primero);
 
     listStudent = Object.values(list).flat()
-
     
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                if (modificado) {
-                    restoreCol();    
-                    modificado = false; 
-                }
-               
-            });
-        });
-    
-    changeCourse(list);
+    ui.renderCourse(list);
 
     } catch (error) {
         console.log(error)
@@ -49,17 +38,28 @@ const main = async () => {
 //Evento: Muestra alumnos de primer año
 (async function initApp() {
     main();
+    
 })();
 
+navMain.addEventListener("click",(e) =>{
+    if (e.target.id === "c1" || e.target.id === "c2" || e.target.id === "c3" ||e.target.id === "c4") {
+        ui.restoreCol();
+        modificado = false;
+
+    }
+})
 
 //Evento: Clica Optativas y muestra y carga datos de optativas
 const handleOptClick = (e) => {
     if (!modificado) {
-        nullNav();    
-        modifyCol();  
+        ui.nullNav();    
+        ui.modifyCol();  
         modificado = true;
     }   
-    changeOPT(e, listStudent); 
+    
+    const listOPT = sr.filterOPT(e, listStudent);
+    
+    ui.renderOPT(listOPT);
 };
 
 document.getElementById("OPT1").addEventListener('click', handleOptClick);
@@ -67,45 +67,27 @@ document.getElementById("OPT2").addEventListener('click', handleOptClick);
 document.getElementById("OPT3").addEventListener('click', handleOptClick);
 
 
-// EVENTO: Abrir Formulario
+// EVENTO: Abrir Formulario de añadir
 document.getElementById("btn-add-ui").addEventListener('click', () => {
-    activeBTNaddStudent(); // Esto inyecta el HTML
+    ui.addBTN(); // Esto inyecta el HTML
     form = true;
 });
 
-// EVENTO DELEGADO: Cerrar Formulario
-// Ponemos el vigilante en el CONTENEDOR, no en el botón directamente
-formContent.addEventListener('click', (e) => {
-    // Si el clic fue en el botón de cerrar (comprobamos el ID)
-    if (e.target.id === "closeForm") {
-        formContent.innerHTML = ""; // Limpiamos
-        form = false;
-        console.log("Formulario cerrado con éxito");
-    }
-});
-
-
-// EVENTO: Abrir Formulario
+// EVENTO: Abrir Formulario de editar
 document.getElementById("btn-edit-ui").addEventListener('click', () => {
-    activeBTNeditStudent(); // Esto inyecta el HTML
+    ui.editBTN(); // Esto inyecta el HTML
     form = true;
 });
 
-// EVENTO DELEGADO: Cerrar Formulario
-// Ponemos el vigilante en el CONTENEDOR, no en el botón directamente
+// EVENTO: Cierra el formulario
 formContent.addEventListener('click', (e) => {
-    // Si el clic fue en el botón de cerrar (comprobamos el ID)
     if (e.target.id === "closeForm") {
-        formContent.innerHTML = ""; // Limpiamos
+        formContent.innerHTML = ""; 
         form = false;
         console.log("Formulario cerrado con éxito");
     }
 });
 
 
-// El evento se aplica al SELECT, no a los items
-selectOrder.addEventListener('change', (e) => {
-    const listaOrdenada = orderStudent(e, listStudent);
-    inputStudents(listaOrdenada);
-});
+
 

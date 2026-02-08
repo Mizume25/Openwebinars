@@ -19,7 +19,7 @@ let colorSTR = 0;
 
 const dataCourse = ["Primero", "Segundo", "Tercero", "Cuarto"];
 //FUNCION: Renderizado de alumnos
-export const inputStudents = async (list) => {
+export const renderT = async (list) => {
   let html = " ";
   studentTable.innerHTML = "";
   list.forEach((p) => {
@@ -51,17 +51,34 @@ export const inputStudents = async (list) => {
 
 };
 
+// ui.js
+export const renderOPT = (listOPT) => {
+    const html = listOPT.map((p) => `
+        <tr id="fila-${p.id}">
+            <td>${p.id}</td>
+            <td><strong>${p.nombre}&nbsp;${p.apellido}</strong></td>
+            <td>${p.edad}</td>
+            <td>${p.curso}</td>
+            <td>${p.notaVisual}</td> <td>
+                <span class="badge bg-warning text-dark">
+                    <i class="fas fa-exclamation-triangle"></i> ${p.incidencias}
+                </span>
+            </td>
+        </tr>`).join(''); 
+
+    studentTable.innerHTML = html;
+};
+
 
 //STYLE
 
 //FUNCION: Canviar color Nav
-export const changeCourse = (list) => {
+export const renderCourse = (list) => {
   displayNav.forEach((link) => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
 
       nullOPT();
-      
 
       displayNav.forEach(item => {
         item.classList.remove('active');
@@ -72,12 +89,13 @@ export const changeCourse = (list) => {
       link.classList.add('active');
       link.classList.remove('text-white');
 
+      
       const indice = parseInt(link.dataset.curso) - 1;
-
 
       const cursoNombre = dataCourse[indice];
 
-      inputStudents(list[cursoNombre]);
+      renderT(list[cursoNombre]);
+      
 
       console.log("Estilo cambiado para:", link.textContent);
     });
@@ -131,7 +149,7 @@ export function nullOPT() {
 }
 
 
-export const activeBTNaddStudent = async () => {
+export const addBTN = async () => {
 
       
 
@@ -155,7 +173,7 @@ export const activeBTNaddStudent = async () => {
   formContent.innerHTML = html;
 }
 
-export const activeBTNeditStudent = async () => {
+export const editBTN = async () => {
 
     let html = `<div class="card border-warning">
     <div class="card-header bg-warning text-dark">Modificar Registro</div>
@@ -180,6 +198,10 @@ export const activeBTNeditStudent = async () => {
 
   formContent.innerHTML = html;
 }
+
+
+
+
 
 
 
