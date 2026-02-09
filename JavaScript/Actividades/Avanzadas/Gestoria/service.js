@@ -51,6 +51,26 @@ export const orderRows = (e,list) => {
     return orderBY;
 };
 
+
+//FUNCION: Ordena Filas por Categoria
+export const orderRowsDate = (e, list) => {
+    // Creamos una copia para no mutar la lista original accidentalmente
+    let tempList = list; 
+    
+    switch (e.target.value) {
+        case "now":
+            // Más reciente a más antiguo: b - a
+            return tempList.sort((a, b) => new Date(b.fechaMatricula) - new Date(a.fechaMatricula));
+        case "old":
+            // Más antiguo a más reciente: a - b
+            return tempList.sort((a, b) => new Date(a.fechaMatricula) - new Date(b.fechaMatricula));
+        default:
+            return list;
+    }
+};
+
+
+
 //FUNCION: Calcular media individual
 export const mediaStudent = (list) => {
     let suma = 0;
@@ -136,8 +156,8 @@ export const orderOPT = (e,list) =>{
         case "edad":
             orderBY = orderList.sort((a,b) => b.edad - a.edad);
             break;
-        case "nota":
-            orderBY = orderList.sort((a,b) => a.notaVisual - b.notaVisual)
+        case "notaOPT":
+            orderBY = orderList.sort((a,b) => b.notaVisual - a.notaVisual)
         default:"general"
             return list;
     }

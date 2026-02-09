@@ -17,7 +17,7 @@ let colorLEN = 0;
 let colorSCI = 0;
 let colorSTR = 0;
 
-const dataCourse = ["Primero", "Segundo", "Tercero", "Cuarto"];
+const dataCourse = ["Primero", "Segundo", "Tercero", "Cuarto","Todos"];
 //FUNCION: Renderizado de alumnos
 export const renderT = async (list) => {
   let html = " ";
@@ -30,7 +30,7 @@ export const renderT = async (list) => {
     colorLEN = p.notas.lengua >= 5 ? "text-success" : "text-danger";
     colorSCI = p.notas.ciencias >= 5 ? "text-success" : "text-danger";
     colorSTR = p.notas.historia >= 5 ? "text-success" : "text-danger";
-    html += `<tr id="fila-${p.id}">
+    html += `<tr id="fila-${p.id}" style="cursor: pointer;">
              <td>${p.id}</td>
              <td><strong>${p.nombre}&nbsp;${p.apellido} </strong></td>
              <td>${p.edad}</td>
@@ -51,10 +51,36 @@ export const renderT = async (list) => {
 
 };
 
+//FUNCION: Renderizar todos los alumnos
+export const renderAll = async (list) => {
+  let html = " ";
+  studentTable.innerHTML = "";
+  list.forEach((p) => {
+    suma = p.notas.mates + p.notas.lengua + p.notas.ciencias + p.notas.historia + p.optativas[0].nota + p.optativas[1].nota;
+    notGEn = (suma / 6).toFixed(1); // .toFixed(1) para que no salgan 10 decimales
+    colorBadge = notGEn >= 5 ? "bg-success" : "bg-danger";
+    html += `<tr id="fila-${p.id}" style="cursor: pointer;">
+             <td>${p.id}</td>
+             <td><strong>${p.nombre}&nbsp;${p.apellido} </strong></td>
+             <td>${p.edad}</td>
+             <td>${p.curso} </td>
+             <td><span class="badge ${colorBadge}">${notGEn}</span></td> 
+             <td>${p.fechaMatricula}<td>
+            </tr>`;
+  });
+
+
+  modifyColAll();
+  studentTable.innerHTML = html;
+
+};
+
+
+
 // ui.js
 export const renderOPT = (listOPT) => {
     const html = listOPT.map((p) => `
-        <tr id="fila-${p.id}">
+        <tr id="fila-${p.id}" style="cursor: pointer;">
             <td>${p.id}</td>
             <td><strong>${p.nombre}&nbsp;${p.apellido}</strong></td>
             <td>${p.edad}</td>
@@ -95,6 +121,12 @@ export const renderCourse = (list) => {
 
       const cursoNombre = dataCourse[indice];
 
+      if (cursoNombre == "Todos") {
+        let temp = Object.values(list).flat();
+        renderAll(temp);
+        return;
+      }
+      
       renderT(list[cursoNombre]);
       
 
@@ -113,6 +145,17 @@ export const modifyCol = async () => {
   headRow.children[3].textContent = "Curso"
   headRow.children[4].textContent = "Nota"
   
+}
+
+//FUNCION: Modificar Columna
+export const modifyColAll = async () => {
+     for (let i = 11; i >= 6; i--) {
+    if (headRow.children[i]) {
+      headRow.children[i].remove();
+    }
+  }
+  headRow.children[4].textContent = "Nota"
+  headRow.children[5].textContent = "Fecha Matricula"
 }
 
 //FUNCION: Restaura Columnas
@@ -161,13 +204,15 @@ export const addBTN = async () => {
     <div class="card-header bg-success text-white">Nuevo Registro</div>
     <div class="card-body">
         <form id="form-create">
-            <input type="text" class="form-control mb-2" placeholder="Nombre" required>
-            <input type="text" class="form-control mb-2" placeholder="Apellidos" required>
-            <select class="form-select mb-2">
+            <input type="text" class="form-control mb-2" placeholder="Nombre" name="nombre" required>
+            <input type="text" class="form-control mb-2" placeholder="Apellidos" name="apellido"  required>
+            <select class="form-select mb-2" name="curso" >
                 <option value="1">1º Curso</option>
                 <option value="2">2º Curso</option>
+                 <option value="3">3º Curso</option>
+                <option value="4">4º Curso</option>
             </select>
-            <input type="date" class="form-control mb-3" title="Fecha Matriculación">
+            <input type="date" class="form-control mb-3" title="Fecha Matriculación" name="fechaMatricula" required>
             <button type="submit" class="btn btn-success w-100">Registrar Estudiante</button>
             <button class="btn btn-danger w-100 mt-2" id="closeForm">Cerrar Formulario</button>
         </form>
@@ -188,6 +233,8 @@ export const editBTN = async () => {
             <select class="form-select mb-2" id="edit-curso">
                 <option value="1">1º Curso</option>
                 <option value="2">2º Curso</option>
+                 <option value="3">3º Curso</option>
+                <option value="4">4º Curso</option>
             </select>
             <input type="date" class="form-control mb-2" id="edit-fecha">
             <div class="form-floating mb-3">
@@ -235,7 +282,31 @@ export const selectUpdate = () => {
     orderRows.add(new Option("Incidencias", "incidencias"));
 };
 
+//FUNCION: Restaura Columnas OPT
+export const restoreColOPT = () => {  
+    // Sobreescribimos todo el contenido de la fila de cabecera
+    headRow.innerHTML = `
+        <th>ID</th>
+        <th>Alumno</th>
+        <th>Edad</th>
+        <th>Curso</th>
+        <th>Nota</th>
+        <th>Incidencias</th>
+    `;
+};
 
+//FUNCION: Renderiza otro select por fecha
+export const selectData = () =>{
+     orderRows.innerHTML = ""; 
+     orderRows.add(new Option("General", "general"));
+     orderRows.add(new Option("Reciente", "now"));
+     orderRows.add(new Option("Antiguedad", "old"));
+
+
+}
+
+
+//FUNCION: Restaura Update
 export const backSelect = () => {
    
     // LIMPIEZA: Volvemos al estado original
@@ -251,6 +322,22 @@ export const backSelect = () => {
     orderRows.add(new Option("Nombre Alumno", "nombreAlumno"));
     orderRows.add(new Option("Apellido Alumno", "apellidoAlumno"));
     orderRows.add(new Option("Incidencias", "incidencias"));
+};
+
+export const llenarFormularioEdicion = (alumno) => {
+
+    // Mapeamos los datos a los IDs de tu formulario
+    document.getElementById('edit-nombre').value = alumno.nombre;
+    document.getElementById('edit-apellido').value = alumno.apellido;
+    
+    // Quitamos el símbolo "º" para que coincida con el value del select ("1", "2"...)
+    document.getElementById('edit-curso').value = alumno.curso.replace('º', '');
+    
+    document.getElementById('edit-fecha').value = alumno.fechaMatricula;
+    document.getElementById('edit-incidencia').value = alumno.incidencias;
+
+    // Guardamos el ID en un atributo oculto del formulario para saber a quién editamos después
+    document.getElementById('form-edit').dataset.idAlum = alumno.id;
 };
 
 
