@@ -8,6 +8,7 @@ let form = false;
 let listStudent = [];
 let arrayStudent = [];
 let start;
+let listOPT = [];
 let useSection = [true,false,false,false];
 const formContent = document.getElementById("form-container");
 const selectOrder = document.getElementById("filter-materia");
@@ -47,10 +48,10 @@ const main = async () => {
 navMain.addEventListener("click",(e) =>{
     if (e.target.id === "c1" || e.target.id === "c2" || e.target.id === "c3" ||e.target.id === "c4") {
         ui.restoreCol();
-        if (!modificado) {
+        
         ui.backSelect(); 
         selectOrder.value = "general";   
-        }
+        
         
         modificado = false;
         switch (e.target.id) {
@@ -97,7 +98,7 @@ const handleOptClick = (e) => {
         
     }   
     ui.decorateOPT(e);
-    const listOPT = sr.filterOPT(e, listStudent);
+    listOPT = sr.filterOPT(e, listStudent);
     ui.renderOPT(listOPT);
 };
 
@@ -105,10 +106,7 @@ const handleOptClick = (e) => {
 OPTDisplay.addEventListener('click', (e) =>{
     if (e.target.id == "OPT1" || e.target.id == "OPT2" || e.target.id == "OPT3") {
         handleOptClick(e);
-        if (modificado) {
-        ui.selectUpdate();  
-        selectOrder.value = "general";  
-        }
+        ui.selectUpdate();
         selectOrder.value = "general";
     }
 });
@@ -138,8 +136,11 @@ formContent.addEventListener('click', (e) => {
 
 //EVENTO: Ordenar Filas
 selectOrder.addEventListener('change',(e) => {
-  
+    if (!modificado) {
+        
+    
     let grado = sr.knowCours(useSection);
+
     if (e.target.value == "incidencias") {
         let newList = sr.incidentsFilter(arrayStudent[grado]);
         ui.renderT(newList);
@@ -151,6 +152,24 @@ selectOrder.addEventListener('change',(e) => {
         sr.orderRows(e,newList);
 
         ui.renderT(newList);
+    } else {
+        if (e.target.value == "edad" || e.target.value == "notaOPT" || e.target.value == "incidencias") {
+            if (e.target.value == "incidencias") {
+                let newList = sr.incidentsFilter(listOPT);
+                ui.renderOPT(newList);
+                return;
+            } else {
+                let newlist = sr.orderOPT(e,listOPT);
+                ui.renderOPT(newlist);
+                return;
+            }
+        }
+        let newlist = sr.optfilter(e,listOPT);
+
+        ui.renderOPT(newlist);
+
+    }
+
 
 });
 

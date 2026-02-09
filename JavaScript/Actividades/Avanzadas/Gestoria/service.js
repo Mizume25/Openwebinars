@@ -94,11 +94,55 @@ export const knowCours = (useSection) =>{
     return grado;
 }
 
-//FUNCION: Capta lista filtrada
+//FUNCION: Capta lista filtrada con incidencias
 export const incidentsFilter = (list) =>{
     let outerList = list.filter((p) => p.incidencias != "Ninguna");
 
     return outerList;
+}
+
+
+//FUNCION: Filtra lista OPT
+export const optfilter = (e,list) => {
+    let listFilter = [];
+
+    //Filtramos la lista
+    switch (e.target.value) {
+        case "1":
+            listFilter = list.filter((p) => p.curso == "1º");
+            break;
+        case "2":
+            listFilter = list.filter((p) => p.curso == "2º");
+            break;
+        case "3":
+            listFilter = list.filter((p) => p.curso == "3º");
+            break;
+        case "4":
+            listFilter = list.filter((p) => p.curso == "4º");
+            break;
+        default:"general"
+            return list;
+    }
+
+    return listFilter;
+}
+
+//FUNCION: Ordena listsa OPT
+export const orderOPT = (e,list) =>{
+    let orderList = list;
+    let orderBY;
+
+    switch (e.target.value) {
+        case "edad":
+            orderBY = orderList.sort((a,b) => b.edad - a.edad);
+            break;
+        case "nota":
+            orderBY = orderList.sort((a,b) => a.notaVisual - b.notaVisual)
+        default:"general"
+            return list;
+    }
+
+    return orderBY;
 }
 
 
