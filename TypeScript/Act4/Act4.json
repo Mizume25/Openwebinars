@@ -1,9 +1,136 @@
 [
-    {
-        "id":1,
-        "nombre":"Ejemplo",
-        "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "habilidades": ["Habilidad 1", "Habilidad 2", "Habilidad 3", "Habilidad 4"],
-        "notas": ["Habilidad 1", "Habilidad 2", "Habilidad 3", "Habilidad 4"],
-    }    
+  {
+    "titulo": "Elena García - Full Stack Developer",
+    "nacionalidad": "Española",
+    "direccion": "Calle Falsa 123",
+    "edad": 28,
+    "vehiculo": true,
+    "habilidades": ["React", "Node.js", "Docker", "AWS"],
+    "notas": [
+      { "nombre": "Frontend", "nota": 9 },
+      { "nombre": "Backend", "nota": 8 },
+      { "nombre": "DevOps", "nota": 10 },
+      { "nombre": "Bases de Datos", "nota": 9 }
+    ],
+    "link": "Proyecto de Node.js"
+  },
+  {
+    "titulo": "Marcos Soler - Especialista en Ciberseguridad",
+    "nacionalidad": "Mexicano",
+    "direccion": "Av. Reforma 500",
+    "edad": 35,
+    "vehiculo": true,
+    "habilidades": ["Kali Linux", "Wireshark", "Python", "Metasploit"],
+    "notas": [
+      { "nombre": "Criptografía", "nota": 10 },
+      { "nombre": "Redes", "nota": 9 },
+      { "nombre": "Forense", "nota": 9 },
+      { "nombre": "Legislación IT", "nota": 8 }
+    ],
+    "link": "Proyecto de Python"
+  },
+  {
+    "titulo": "Sara Ruiz - Data Scientist",
+    "nacionalidad": "Argentina",
+    "direccion": "Calle Florida 20",
+    "edad": 30,
+    "vehiculo": false,
+    "habilidades": ["Python", "R", "SQL", "TensorFlow"],
+    "notas": [
+      { "nombre": "Estadística", "nota": 8 },
+      { "nombre": "Machine Learning", "nota": 9 },
+      { "nombre": "Visualización", "nota": 10 },
+      { "nombre": "Álgebra Lineal", "nota": 7 }
+    ],
+    "link": "Proyecto de SQL"
+  },
+  {
+    "titulo": "Julián Mesa - Cloud Architect",
+    "nacionalidad": "Colombiano",
+    "direccion": "Carrera 7 #45",
+    "edad": 42,
+    "vehiculo": true,
+    "habilidades": ["Terraform", "Kubernetes", "Azure", "Linux"],
+    "notas": [
+      { "nombre": "Arquitectura Cloud", "nota": 9 },
+      { "nombre": "Seguridad Cloud", "nota": 9 },
+      { "nombre": "Sistemas Operativos", "nota": 8 },
+      { "nombre": "Redes Virtuales", "nota": 10 }
+    ],
+    "link": "Proyecto de Azure Service"
+  },
+  {
+    "titulo": "Carla Vidal - UX/UI Designer",
+    "nacionalidad": "Chilena",
+    "direccion": "Av. Providencia 1200",
+    "edad": 26,
+    "vehiculo": false,
+    "habilidades": ["Figma", "Adobe XD", "CSS3", "Storybook"],
+    "notas": [
+      { "nombre": "Psicología Color", "nota": 10 },
+      { "nombre": "Prototipado", "nota": 10 },
+      { "nombre": "Accesibilidad", "nota": 8 },
+      { "nombre": "Maquetación", "nota": 9 }
+    ],
+    "link": "Proyecto de Figma"
+  },
+  {
+    "titulo": "Tomás Ortega - Mobile App Developer",
+    "nacionalidad": "Uruguayo",
+    "direccion": "Bulevar Artigas 300",
+    "edad": 31,
+    "habilidades": ["Flutter", "Swift", "Kotlin", "Firebase"],
+    "notas": [
+      { "nombre": "iOS Development", "nota": 7 },
+      { "nombre": "Android Dev", "nota": 8 },
+      { "nombre": "Optimización Móvil", "nota": 9 },
+      { "nombre": "APIs Externas", "nota": 9 }
+    ],
+    "link": "Proyecto de Flutter"
+  },
+  {
+    "titulo": "Lucía Blanco - QA Automation Engineer",
+    "nacionalidad": "Española",
+    "direccion": "Paseo de Gracia 50",
+    "edad": 29,
+    "vehiculo": false,
+    "habilidades": ["Selenium", "Cypress", "Jenkins", "Java"],
+    "notas": [
+      { "nombre": "Unit Testing", "nota": 9 },
+      { "nombre": "E2E Testing", "nota": 8 },
+      { "nombre": "Integración Continua", "nota": 8 },
+      { "nombre": "Lógica Progr.", "nota": 9 }
+    ],
+    "link": "Proyecto de Java"
+  },
+  {
+    "titulo": "Roberto Sanz - Database Administrator",
+    "nacionalidad": "Peruano",
+    "direccion": "Av. Larco 800",
+    "edad": 38,
+    "vehiculo": true,
+    "habilidades": ["PostgreSQL", "MongoDB", "Redis", "Oracle"],
+    "notas": [
+      { "nombre": "SQL Avanzado", "nota": 8 },
+      { "nombre": "Modelado de Datos", "nota": 10 },
+      { "nombre": "Tuning/Perf", "nota": 9 },
+      { "nombre": "Big Data Intro", "nota": 8 }
+    ],
+    "link": "Proyecto de MongoDB"
+  },
+  {
+    "titulo": "Inés Torres - DevOps Engineer",
+    "nacionalidad": "Española",
+    "direccion": "Calle Mayor 15",
+    "edad": 33,
+    "vehiculo": true,
+    "habilidades": ["GitLab CI", "Ansible", "Prometheus", "Bash"],
+    "notas": [
+      { "nombre": "Automatización", "nota": 10 },
+      { "nombre": "Monitorización", "nota": 9 },
+      { "nombre": "Contenedores", "nota": 9 },
+      { "nombre": "Scripting Shell", "nota": 10 }
+    ],
+    "link": "Proyecto de Ansible"
+  }
 ]

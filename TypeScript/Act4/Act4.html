@@ -11,30 +11,66 @@
 
 <body class="bg-secondary"> <!---Contenedor Body-->
     <!---Main-->
-    <main class="container bg-white" style="height: 100dvh;">
+    <main class="container bg-white" style="min-height: 100dvh;">
         <!---Header del Main-->
         <section class="main-header d-flex align-items-center" style="height: 100px;">
             <h1 class="p-3">Contenedor Main de Cards</h1> <!---Titulo-->
         </section>
 
         <!--Section - Main --->
-        <section class="main-container h-75 bg-body-secondary main-container d-grid gap-3"
-            style="grid-template-columns: repeat(3, 1fr);">
-
-            <!---Cards-->
-            <article class="card">
-                <div class="card-header bg-danger">
-                    <h2>Titulo</h2>
+        <section class="row row-cols-1 row-cols-md-3 g-4 p-3" id="cardsContent">
+        <!---PLANTILLA DE CARDS---->
+        <!----<div class="col">
+            <article class="card h-100 shadow-sm">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="h5 mb-0">Elena García</h3>
                 </div>
+
                 <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
-                </div>
-                <div class="card-footer"></div>
-                <strong>FOOTER LINK</strong>
-            </article>
+                    <div class="text-center mb-3">
+                        <img src="IMG/alicia.png" alt="Avatar" class="img-fluid rounded-circle shadow-sm"
+                            style="width: 80px; border: 2px solid #dee2e6;">
+                    </div>
 
+                    <div class="d-flex justify-content-between gap-2">
+
+                        <div style="flex: 1;" class="text-center">
+                            <h6 class="fw-bold text-center">Habilidades</h6>
+                            <ul class="list-unstyled small">
+                                <li>React</li>
+                                <li>Node.js</li>
+                                <li>Docker</li>
+                            </ul>
+                        </div>
+
+                        <div class="border-start border-end px-2" style="flex: 1.2;">
+                            <h6 class="fw-bold text-center">Información</h6>
+                            <div class="small">
+                                <p class="mb-1"><strong>Nac:</strong> Española</p>
+                                <p class="mb-1"><strong>Dir:</strong> Calle Falsa 123</p>
+                                <p class="mb-1"><strong>Edad:</strong> 28 años</p>
+                                <p class="mb-0"><strong>Vehículo:</strong> Sí</p>
+                            </div>
+                        </div>
+
+                        <div style="flex: 1;" class="text-center">
+                            <h6 class="fw-bold text-center">Notas</h6>
+                            <ul class="list-unstyled small">
+                                <li>Frontend: 9</li>
+                                <li>Backend: 8</li>
+                                <li>DevOps: 10</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card-footer bg-light d-flex align-items-center justify-content-center"
+                    style="min-height: 50px;">
+                    <a href="#" class="link-info text-decoration-none fw-bold small">LINK DE PROYECTOS</a>
+                </div>
+            </article>
+        </div>--->
 
         </section>
 
