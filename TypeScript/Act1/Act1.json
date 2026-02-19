@@ -1,0 +1,66 @@
+[
+  {
+    "titulo": "Elena García - Full Stack Developer",
+    "descripcion": "Especialista en arquitecturas escalables y microservicios con un enfoque en rendimiento.",
+    "habilidades": ["React", "Node.js", "Docker", "AWS"],
+    "notas": [9, 8, 10, 9],
+    "link": true
+  },
+  {
+    "titulo": "Marcos Soler - Especialista en Ciberseguridad",
+    "descripcion": "Experto en hacking ético, auditorías de seguridad y endurecimiento de sistemas (Hardening).",
+    "habilidades": ["Kali Linux", "Wireshark", "Python", "Metasploit"],
+    "notas": [10, 9, 9, 8],
+    "link": false
+  },
+  {
+    "titulo": "Sara Ruiz - Data Scientist",
+    "descripcion": "Apasionada por encontrar patrones en grandes volúmenes de datos y modelos predictivos.",
+    "habilidades": ["Python", "R", "SQL", "TensorFlow"],
+    "notas": [8, 9, 10, 7],
+    "link": true
+  },
+  {
+    "titulo": "Julián Mesa - Cloud Architect",
+    "descripcion": "Diseño e implementación de infraestructuras en la nube optimizando costes y disponibilidad.",
+    "habilidades": ["Terraform", "Kubernetes", "Azure", "Linux"],
+    "notas": [9, 9, 8, 10],
+    "link": true
+  },
+  {
+    "titulo": "Carla Vidal - UX/UI Designer",
+    "descripcion": "Traducción de necesidades complejas en interfaces intuitivas y estéticas centradas en el usuario.",
+    "habilidades": ["Figma", "Adobe XD", "CSS3", "Storybook"],
+    "notas": [10, 10, 8, 9],
+    "link": true
+  },
+  {
+    "titulo": "Tomás Ortega - Mobile App Developer",
+    "descripcion": "Desarrollo de aplicaciones nativas y multiplataforma con alto rendimiento gráfico.",
+    "habilidades": ["Flutter", "Swift", "Kotlin", "Firebase"],
+    "notas": [7, 8, 9, 9],
+    "link": false
+  },
+  {
+    "titulo": "Lucía Blanco - QA Automation Engineer",
+    "descripcion": "Asegurando la calidad del software mediante tests automatizados y CI/CD.",
+    "habilidades": ["Selenium", "Cypress", "Jenkins", "Java"],
+    "notas": [9, 8, 8, 9],
+    "link": true
+  },
+  {
+    "titulo": "Roberto Sanz - Database Administrator",
+    "descripcion": "Gestión, optimización y respaldo de bases de datos críticas relacionales y NoSQL.",
+    "habilidades": ["PostgreSQL", "MongoDB", "Redis", "Oracle"],
+    "notas": [8, 10, 9, 8],
+    "link": false
+  },
+  {
+    "titulo": "Inés Torres - DevOps Engineer",
+    "descripcion": "Cerrando la brecha entre desarrollo y operaciones mediante la automatización total.",
+    "habilidades": ["GitLab CI", "Ansible", "Prometheus", "Bash"],
+    "notas": [10, 9, 9, 10],
+    "link": true
+  }
+]
+

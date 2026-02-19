@@ -1,0 +1,9 @@
+[
+    {
+        "id":1,
+        "nombre":"Ejemplo",
+        "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "habilidades": ["Habilidad 1", "Habilidad 2", "Habilidad 3", "Habilidad 4"],
+        "notas": ["Habilidad 1", "Habilidad 2", "Habilidad 3", "Habilidad 4"],
+    }    
+]
