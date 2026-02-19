@@ -1,0 +1,114 @@
+{
+  "equipos": [
+    {
+      "pais": "Irlanda",
+      "icon":"img/banderas/irl.png",
+      "pt": 14,
+      "pj": 3,
+      "pg": 3,
+      "pe": 0,
+      "pp": 4,
+      "pf": 86,
+      "pc": 58,
+      "bon": 2
+    },
+    {
+      "pais": "Francia",
+      "icon":"img/banderas/fra.png",
+      "pt": 11,
+      "pj": 3,
+      "pg": 2,
+      "pe": 0,
+      "pp": 1,
+      "pf": 141,
+      "pc": 50,
+      "bon": 3
+    },
+    {
+      "pais": "Inglaterra",
+      "icon":"img/banderas/ang.png",
+      "pt": 10,
+      "pj": 3,
+      "pg": 2,
+      "pe": 0,
+      "pp": 1,
+      "pf": 64,
+      "pc": 67,
+      "bon": 2
+    },
+    {
+      "pais": "Escocia",
+      "icon":"img/banderas/esc.png",
+      "pt": 6,
+      "pj": 3,
+      "pg": 1,
+      "pe": 0,
+      "pp": 2,
+      "pf": 64,
+      "pc": 67,
+      "bon": 2
+    },
+    {
+      "pais": "Italia",
+      "icon":"img/banderas/ita.png",
+      "pt": 4,
+      "pj": 3,
+      "pg": 1,
+      "pe": 0,
+      "pp": 2,
+      "pf": 65,
+      "pc": 119,
+      "bon": 0
+    },
+    {
+      "pais": "Gales",
+      "icon":"img/banderas/gal.png",
+      "pt": 1,
+      "pj": 3,
+      "pg": 0,
+      "pe": 0,
+      "pp": 3,
+      "pf": 33,
+      "pc": 92,
+      "bon": 1
+    }
+    
+  ],
+
+  "leyenda":[
+    {
+      "abv": "pt",
+      "traduccion": "Partidos Totales"
+    },
+    {
+      "abv":"pj",
+      "traduccion":"Partidos Jugados"
+    },
+    {
+      "abv":"pg",
+      "traduccion":"Partidos Ganados"
+    },
+    {
+      "abv":"pe",
+      "traduccion":"Partidos Empatados"
+    },
+    {
+      "abv":"pp",
+      "traduccion":"Partidos Perdidos"
+    },
+    {
+      "abv":"pf",
+      "traduccion":"Partidos a Favor"
+    },
+    {
+      "abv":"pc",
+      "traduccion":"Partidos en Contra"
+    },
+    {
+      "abv":"bon",
+      "traduccion":"Puntos Bonificacion"
+    }
+  ]
+
+  
+}
