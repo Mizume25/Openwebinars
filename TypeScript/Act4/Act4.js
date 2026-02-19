@@ -1,8 +1,7 @@
 //Recorrido de cards
 const displayCard = document.getElementById('cardsContent');
-
 //Array de Imagenes ejemplo
-let arrayRoutes:string[] = [
+let arrayRoutes = [
     "IMG/alicia.png",
     "IMG/ester.png",
     "IMG/ester.png",
@@ -11,53 +10,34 @@ let arrayRoutes:string[] = [
     "IMG/pep.png",
     "IMG/sara.png"
 ];
-//Creación de interficies  - Propiedades de un Empleado
-interface jobProperties {
-    id:number,
-    titulo: string,
-    nacionalidad: string,
-    direccion: string,
-    edad: number,
-    vehiculo: boolean,
-    habilidades: string[],
-    notas: object[],
-    link: string,
-}
-
 //FUNCION: Recibe el JSON
-const captureJSON = async (): Promise<jobProperties[] | undefined> => {
+const captureJSON = async () => {
     try {
-
         //Leemos el archivo JSON
         const answer = await fetch('Act4.json');
-
         //Comprobamos error de lectura
-        if (!answer.ok) throw new Error("No se ha podido cargar el archivo JSON");
-
+        if (!answer.ok)
+            throw new Error("No se ha podido cargar el archivo JSON");
         //Guarda en array de interficies job todo el json
-        let data: jobProperties[] = await answer.json();
-
+        let data = await answer.json();
         return data; //Retornamos la lista
-
-    } catch (error) {
-        console.log(error)
     }
-}
-
+    catch (error) {
+        console.log(error);
+    }
+};
 //FUNCION: UI de renderizado de cards
 const renderCards = async () => {
-
     //Recibimos el objeto
-    let data: jobProperties[] | undefined = await captureJSON();
-
+    let data = await captureJSON();
     //Comprobamos elemento padre
-    if(!displayCard) return;
+    if (!displayCard)
+        return;
     //Comprobamos sus erratas
-    if (data == undefined) return;
-
+    if (data == undefined)
+        return;
     //Declaramos html
     let html = ``;
-
     let index = 0;
     data.forEach((item) => {
         html += `<div class="col">
@@ -105,47 +85,30 @@ const renderCards = async () => {
                 </div>
             </article>
         </div>`;
-
         index = (index + 1) % arrayRoutes.length; //Suma modular
-
     });
-
-        displayCard.innerHTML = html;
-
-         let apend = ``;
-
-        data.forEach((p)=>{
-
-                let displayGrades = document.getElementById(`notas-${p.id}`);
-                let displayAbility = document.getElementById(`habilidades-${p.id}`);
-                
-
-                p.habilidades.forEach((s)=>{
-                    apend += `<li>${s}</li>`
-                });
-
-                if(!displayAbility) return;
-                if(!displayGrades) return;
-
-                displayAbility.innerHTML = apend;
-
-                apend = ``;
-
-                p.notas.forEach((n:any)=>{
-                    apend += `<li>${n.nombre} - ${n.nota}</li>`
-                })
-
-                displayGrades.innerHTML = apend
-
-                apend = ``;
-         });
-
-}
-
+    displayCard.innerHTML = html;
+    let apend = ``;
+    data.forEach((p) => {
+        let displayGrades = document.getElementById(`notas-${p.id}`);
+        let displayAbility = document.getElementById(`habilidades-${p.id}`);
+        p.habilidades.forEach((s) => {
+            apend += `<li>${s}</li>`;
+        });
+        if (!displayAbility)
+            return;
+        if (!displayGrades)
+            return;
+        displayAbility.innerHTML = apend;
+        apend = ``;
+        p.notas.forEach((n) => {
+            apend += `<li>${n.nombre} - ${n.nota}</li>`;
+        });
+        displayGrades.innerHTML = apend;
+        apend = ``;
+    });
+};
 //Manipulacion de DOM
 document.addEventListener('DOMContentLoaded', renderCards);
-
-
-
-
-
+export {};
+//# sourceMappingURL=Act4.js.map

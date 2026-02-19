@@ -1,5 +1,6 @@
 [
   {
+    "id":1,
     "titulo": "Elena García - Full Stack Developer",
     "nacionalidad": "Española",
     "direccion": "Calle Falsa 123",
@@ -15,6 +16,7 @@
     "link": "Proyecto de Node.js"
   },
   {
+    "id":2,
     "titulo": "Marcos Soler - Especialista en Ciberseguridad",
     "nacionalidad": "Mexicano",
     "direccion": "Av. Reforma 500",
@@ -30,6 +32,7 @@
     "link": "Proyecto de Python"
   },
   {
+    "id":3,
     "titulo": "Sara Ruiz - Data Scientist",
     "nacionalidad": "Argentina",
     "direccion": "Calle Florida 20",
@@ -45,6 +48,7 @@
     "link": "Proyecto de SQL"
   },
   {
+    "id":4,
     "titulo": "Julián Mesa - Cloud Architect",
     "nacionalidad": "Colombiano",
     "direccion": "Carrera 7 #45",
@@ -60,6 +64,7 @@
     "link": "Proyecto de Azure Service"
   },
   {
+    "id":5,
     "titulo": "Carla Vidal - UX/UI Designer",
     "nacionalidad": "Chilena",
     "direccion": "Av. Providencia 1200",
@@ -75,6 +80,7 @@
     "link": "Proyecto de Figma"
   },
   {
+    "id":6,
     "titulo": "Tomás Ortega - Mobile App Developer",
     "nacionalidad": "Uruguayo",
     "direccion": "Bulevar Artigas 300",
@@ -89,6 +95,7 @@
     "link": "Proyecto de Flutter"
   },
   {
+    "id":7,
     "titulo": "Lucía Blanco - QA Automation Engineer",
     "nacionalidad": "Española",
     "direccion": "Paseo de Gracia 50",
@@ -104,6 +111,7 @@
     "link": "Proyecto de Java"
   },
   {
+    "id":8,
     "titulo": "Roberto Sanz - Database Administrator",
     "nacionalidad": "Peruano",
     "direccion": "Av. Larco 800",
@@ -119,6 +127,7 @@
     "link": "Proyecto de MongoDB"
   },
   {
+    "id":9,
     "titulo": "Inés Torres - DevOps Engineer",
     "nacionalidad": "Española",
     "direccion": "Calle Mayor 15",
