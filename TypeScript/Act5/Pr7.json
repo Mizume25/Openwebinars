@@ -2,7 +2,7 @@
   "equipos": [
     {
       "pais": "Irlanda",
-      "icon":"img/banderas/irl.png",
+      "icon":"banderas/irl.png",
       "pt": 14,
       "pj": 3,
       "pg": 3,
@@ -14,7 +14,7 @@
     },
     {
       "pais": "Francia",
-      "icon":"img/banderas/fra.png",
+      "icon":"banderas/fra.png",
       "pt": 11,
       "pj": 3,
       "pg": 2,
@@ -26,7 +26,7 @@
     },
     {
       "pais": "Inglaterra",
-      "icon":"img/banderas/ang.png",
+      "icon":"banderas/ang.png",
       "pt": 10,
       "pj": 3,
       "pg": 2,
@@ -38,7 +38,7 @@
     },
     {
       "pais": "Escocia",
-      "icon":"img/banderas/esc.png",
+      "icon":"banderas/esc.png",
       "pt": 6,
       "pj": 3,
       "pg": 1,
@@ -50,7 +50,7 @@
     },
     {
       "pais": "Italia",
-      "icon":"img/banderas/ita.png",
+      "icon":"banderas/ita.png",
       "pt": 4,
       "pj": 3,
       "pg": 1,
@@ -62,7 +62,7 @@
     },
     {
       "pais": "Gales",
-      "icon":"img/banderas/gal.png",
+      "icon":"banderas/gal.png",
       "pt": 1,
       "pj": 3,
       "pg": 0,
