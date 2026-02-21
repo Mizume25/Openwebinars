@@ -71,12 +71,12 @@ const fetchData = async () => {
 //FUNCION: Renderiza Elementos del DOM
 
 //Declaramos elementos del DOM
-const displayTable = document.getElementById('tableMain');
+const displayThead = document.getElementById('headTable');
+const displayBody = document.getElementById('bodyTable');
 
 //2.1 Renderizar TH's
 function renderTH(data: DataResponse) {
-    //Comprobar
-    if (!displayTable) return;
+    
 
     //HTML
     let html = `<th colspan="2">Equipos</th>`;
@@ -93,7 +93,7 @@ function renderTH(data: DataResponse) {
     rowTable.classList.add("border-0", "border-bottom", "border-danger", "border-3");
 
     //Insertamos row en el table
-    displayTable.appendChild(rowTable);
+    displayThead?.appendChild(rowTable);
 
     //Inyectamos html
     rowTable.innerHTML = html;
@@ -103,9 +103,6 @@ function renderTH(data: DataResponse) {
 
 //FUNCION: Renderiza td's de la tabla
 function renderTD(data: DataResponse) {
-    //Comprobar
-    if (!displayTable) return;
-
 
     let cont: number = 1;
     //RECORREMOS EL ARRAY
@@ -131,7 +128,7 @@ function renderTD(data: DataResponse) {
         // 3. Inyectamos y añadimos al DOM
         rowTable.innerHTML = html;
 
-        displayTable.appendChild(rowTable);
+        displayBody?.appendChild(rowTable);
 
         cont++;
     });

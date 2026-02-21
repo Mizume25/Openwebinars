@@ -1,0 +1,263 @@
+[
+    {
+        "informacion": {
+            "nombre": "Jornada 1",
+            "fechaInicio": "2025-01-31",
+            "fechaFinal": "2025-02-01"
+        },
+        "encuentros": [
+            {
+                "local": {
+                    "bandera": "fra.png",
+                    "nombre": "Francia"
+                },
+                "resultado": {
+                    "local": 43,
+                    "visitante": 0
+                },
+                "visitante": {
+                    "bandera": "gal.png",
+                    "nombre": "Gales"
+                }
+            },
+            {
+                "local": {
+                    "bandera": "esc.png",
+                    "nombre": "Escocia"
+                },
+                "resultado": {
+                    "local": 31,
+                    "visitante": 19
+                },
+                "visitante": {
+                    "bandera": "ita.png",
+                    "nombre": "Italia"
+                }
+            },
+            {
+                "local": {
+                    "bandera": "irl.png",
+                    "nombre": "Irlanda"
+                },
+                "resultado": {
+                    "local": 27,
+                    "visitante": 22
+                },
+                "visitante": {
+                    "bandera": "ang.png",
+                    "nombre": "Inglaterra"
+                }
+            }
+        ]
+    },
+    {
+        "informacion": {
+            "nombre": "Jornada 2",
+            "fechaInicio": "2025-02-08",
+            "fechaFinal": "2025-02-09"
+        },
+        "encuentros": [
+            {
+                "local": {
+                    "bandera": "ita.png",
+                    "nombre": "Italia"
+                },
+                "resultado": {
+                    "local": 22,
+                    "visitante": 15
+                },
+                "visitante": {
+                    "bandera": "gal.png",
+                    "nombre": "Gales"
+                }
+            },
+            {
+                "local": {
+                    "bandera": "ang.png",
+                    "nombre": "Inglaterra"
+                },
+                "resultado": {
+                    "local": 26,
+                    "visitante": 25
+                },
+                "visitante": {
+                    "bandera": "fra.png",
+                    "nombre": "Francia"
+                }
+            },
+            {
+                "local": {
+                    "bandera": "esc.png",
+                    "nombre": "Escocia"
+                },
+                "resultado": {
+                    "local": 18,
+                    "visitante": 32
+                },
+                "visitante": {
+                    "bandera": "irl.png",
+                    "nombre": "Irlanda"
+                }
+            }
+        ]
+    },
+    {
+        "informacion": {
+            "nombre": "Jornada 3",
+            "fechaInicio": "2025-02-22",
+            "fechaFinal": "2025-02-23"
+        },
+        "encuentros": [
+            {
+                "local": {
+                    "bandera": "gal.png",
+                    "nombre": "Gales"
+                },
+                "resultado": {
+                    "local": 18,
+                    "visitante": 27
+                },
+                "visitante": {
+                    "bandera": "irl.png",
+                    "nombre": "Irlanda"
+                }
+            },
+            {
+                "local": {
+                    "bandera": "ang.png",
+                    "nombre": "Inglaterra"
+                },
+                "resultado": {
+                    "local": 16,
+                    "visitante": 15
+                },
+                "visitante": {
+                    "bandera": "esc.png",
+                    "nombre": "Escocia"
+                }
+            },
+            {
+                "local": {
+                    "bandera": "ita.png",
+                    "nombre": "Italia"
+                },
+                "resultado": {
+                    "local": 24,
+                    "visitante": 73
+                },
+                "visitante": {
+                    "bandera": "fra.png",
+                    "nombre": "Francia"
+                }
+            }
+        ]
+    },
+    {
+        "informacion": {
+            "nombre": "Jornada 4",
+            "fechaInicio": "2025-03-08",
+            "fechaFinal": "2025-03-09"
+        },
+        "encuentros": [
+            {
+                "local": {
+                    "bandera": "irl.png",
+                    "nombre": "Irlanda"
+                },
+                "resultado": {
+                    "local": null,
+                    "visitante": null,
+                    "horario": "2025-03-08T15:15:00"
+                },
+                "visitante": {
+                    "bandera": "fra.png",
+                    "nombre": "Francia"
+                }
+            },
+            {
+                "local": {
+                    "bandera": "esc.png",
+                    "nombre": "Escocia"
+                },
+                "resultado": {
+                    "local": null,
+                    "visitante": null,
+                    "horario": "2025-03-08T17:45:00"
+                },
+                "visitante": {
+                    "bandera": "gal.png",
+                    "nombre": "Gales"
+                }
+            },
+            {
+                "local": {
+                    "bandera": "ang.png",
+                    "nombre": "Inglaterra"
+                },
+                "resultado": {
+                    "local": null,
+                    "visitante": null,
+                    "horario": "2025-03-08T16:00:00"
+                },
+                "visitante": {
+                    "bandera": "ita.png",
+                    "nombre": "Italia"
+                }
+            }
+        ]
+    },
+    {
+        "informacion": {
+            "nombre": "Jornada 5",
+            "fechaInicio": "2025-03-15",
+            "fechaFinal": null
+        },
+        "encuentros": [
+            {
+                "local": {
+                    "bandera": "ita.png",
+                    "nombre": "Italia"
+                },
+                "resultado": {
+                    "local": null,
+                    "visitante": null,
+                    "horario": "2025-03-15T15:15:00"
+                },
+                "visitante": {
+                    "bandera": "irl.png",
+                    "nombre": "Irlanda"
+                }
+            },
+            {
+                "local": {
+                    "bandera": "gal.png",
+                    "nombre": "Gales"
+                },
+                "resultado": {
+                    "local": null,
+                    "visitante": null,
+                    "horario": "2025-03-15T17:45:00"
+                },
+                "visitante": {
+                    "bandera": "ang.png",
+                    "nombre": "Inglaterra"
+                }
+            },
+            {
+                "local": {
+                    "bandera": "fra.png",
+                    "nombre": "Francia"
+                },
+                "resultado": {
+                    "local": null,
+                    "visitante": null,
+                    "horario": "2025-03-15T21:00:00"
+                },
+                "visitante": {
+                    "bandera": "esc.png",
+                    "nombre": "Escocia"
+                }
+            }
+        ]
+    }
+]

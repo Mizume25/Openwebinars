@@ -18,12 +18,10 @@ const fetchData = async () => {
 };
 //FUNCION: Renderiza Elementos del DOM
 //Declaramos elementos del DOM
-const displayTable = document.getElementById('tableMain');
+const displayThead = document.getElementById('headTable');
+const displayBody = document.getElementById('bodyTable');
 //2.1 Renderizar TH's
 function renderTH(data) {
-    //Comprobar
-    if (!displayTable)
-        return;
     //HTML
     let html = `<th colspan="2">Equipos</th>`;
     //RECORREMOS ARRAY
@@ -35,15 +33,12 @@ function renderTH(data) {
     // Tienes que separar las clases por comas
     rowTable.classList.add("border-0", "border-bottom", "border-danger", "border-3");
     //Insertamos row en el table
-    displayTable.appendChild(rowTable);
+    displayThead?.appendChild(rowTable);
     //Inyectamos html
     rowTable.innerHTML = html;
 }
 //FUNCION: Renderiza td's de la tabla
 function renderTD(data) {
-    //Comprobar
-    if (!displayTable)
-        return;
     let cont = 1;
     //RECORREMOS EL ARRAY
     data.equipos.forEach((p) => {
@@ -65,7 +60,7 @@ function renderTD(data) {
     `;
         // 3. Inyectamos y añadimos al DOM
         rowTable.innerHTML = html;
-        displayTable.appendChild(rowTable);
+        displayBody?.appendChild(rowTable);
         cont++;
     });
 }
