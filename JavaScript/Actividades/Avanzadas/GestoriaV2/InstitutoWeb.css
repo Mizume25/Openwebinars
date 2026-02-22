@@ -1,0 +1,40 @@
+/* Decoración extra para la tabla */
+.table img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+    
+}
+
+.table th {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.table td {
+    font-size: 0.9rem;
+}
+
+/* Efecto para los formularios laterales */
+#form-container {
+    transition: all 0.3s ease;
+}
+
+/* Sidebar estático si la tabla es muy larga */
+aside {
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+
+/* Colores para aprobados/suspensos (para tu lógica JS) */
+.nota-aprobada { color: #198754; font-weight: bold; }
+.nota-suspensa { color: #dc3545; font-weight: bold; }
+
+/* Badge de incidencia */
+.badge-incidencia {
+    cursor: pointer;
+}
