@@ -1,3 +1,4 @@
+//MODELO PERSONA
 class Persona {
 
     //1. Propiedades de la classe
@@ -63,7 +64,7 @@ class Persona {
 
 }
 
-//CLASSE PERSONA
+//MODELO STUDENT
 export class Student extends Persona {
 
     //1. Builder
@@ -75,7 +76,7 @@ export class Student extends Persona {
         //Propiedades de Student
         this.id = datos.id;
         this.curso = datos.curso;
-        this.notas = datos.notas;         // Objeto: {mates: 7, lengua: 8...}
+        this.notas = datos.notas;        
         this.optativas = datos.optativas; // Array de objetos
         this.incidencias = datos.incidencias;
         this.fechaMatricula = datos.fechaMatricula;
@@ -99,4 +100,26 @@ export class Student extends Persona {
         return this.incidencias !== "Ninguna";
     }
 
+}
+
+//MODELO: TUTOR
+export class Tutor extends Persona {
+
+    //BUILDER
+    constructor (datos){
+
+
+        //HERENCIA
+        super (datos.name, datos,thislastName, datos.age);
+
+        //Propiedades de Tutor
+        this.id = datos.id;
+        this.salario = datos.salario;
+        this.curso = datos.curso;
+        this.materias = datos.materias;
+        this.optativa = datos.optativa;
+        this.email = datos.email;
+        this.tutor = datos.tutor;
+
+    }
 }
