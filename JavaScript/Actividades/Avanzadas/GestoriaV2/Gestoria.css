@@ -1,0 +1,40 @@
+*{
+    border-radius: 8px;
+}
+
+main {
+    display: grid;
+    min-height: 100dvh;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 150px 1fr; 
+    gap: 10px;
+}
+
+
+header {
+    grid-column: 1 / 4; 
+    background: linear-gradient(#0159a5, #79aac5);
+    min-height: 100px; 
+}
+
+
+#left, #right, section {
+    grid-row: 2;
+}
+
+section {
+    grid-column: 2;
+    
+    background: #e90707;
+}
+
+
+#left {
+    grid-column: 1;
+    background: linear-gradient(#9db2ff,#4e33e8);
+}
+
+#right { 
+    grid-column: 3;
+    background: #cb791c;
+}
