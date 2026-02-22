@@ -1,40 +1,86 @@
-*{
+:root {
+    --bg-main: #f8f9fa;
+    --accent: #0dcaf0;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-main);
+}
+
+/* Nav Pills Modernos */
+.nav-pills .nav-link {
     border-radius: 8px;
+    margin: 0 5px;
+    transition: var(--transition);
 }
 
-main {
-    display: grid;
-    min-height: 100dvh;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 150px 1fr; 
-    gap: 10px;
+.nav-pills .nav-link.active {
+    background-color: var(--accent);
+    color: #000 !important;
+    font-weight: 600;
 }
 
-
-header {
-    grid-column: 1 / 4; 
-    background: linear-gradient(#0159a5, #79aac5);
-    min-height: 100px; 
+/* Tabla Estilizada */
+.table thead th {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 1.2rem 0.75rem;
+    border-bottom: 2px solid #eee;
 }
 
-
-#left, #right, section {
-    grid-row: 2;
+.table tbody tr {
+    transition: var(--transition);
 }
 
-section {
-    grid-column: 2;
-    
-    background: #e90707;
+.table tbody tr:hover {
+    background-color: #f1f4f9;
+    transform: scale(1.002);
 }
 
-
-#left {
-    grid-column: 1;
-    background: linear-gradient(#9db2ff,#4e33e8);
+/* Avatares y Badges */
+.table img {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 8px; /* Cuadrado redondeado es más moderno */
+    margin-right: 12px;
 }
 
-#right { 
-    grid-column: 3;
-    background: #cb791c;
+.badge {
+    padding: 0.5em 0.8em;
+    font-weight: 500;
 }
+
+/* Card glassmorphism effect */
+.card {
+    border-radius: 12px;
+}
+
+/* Botones de Optativas */
+#optativas .list-group-item {
+    border-color: #e9ecef !important;
+    margin-bottom: 5px;
+}
+
+#optativas .list-group-item:hover {
+    border-color: var(--accent) !important;
+    background-color: #f0faff;
+}
+
+/* Sticky sidebar fix */
+aside {
+    height: fit-content;
+}
+
+/* En InstitutoWeb.css */
+.nav-link {
+    transition: all 0.3s ease-in-out; /* Esto da el efecto "suave" estilo Windows */
+}
+
+.nav-link.active {
+    transform: scale(1.05); /* Un pequeño aumento para dar profundidad */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
