@@ -13,17 +13,52 @@ export class Student {
     #enrollmentDate;
 
     //2. Builder
-    constructor (id, name, surname, age, course, grades, electives, incidents, enrollmentDate){
-        this.#id = id;
-        this.#name = name;
-        this.#surname = surname;
-        this.#age = age;
-        this.#course = course;
-        this.#grades = grades;
-        this.electives = electives;
-        this.incidents = incidents;
-        this.enrollmentDate = enrollmentDate;
+    constructor(data) {
+        this.#id = data.id;
+        this.#name = data.name;
+        this.#surname = data.surname;
+        this.#age = data.age;
+        this.#course = data.course;
+        this.#grades = data.grades;
+        this.#electives = data.electives;
+        this.#incidents = data.incidents;
+        this.#enrollmentDate = data.enrollmentDate;
     }
+
+    get average() {
+        // 1. Extraemos solo los números de las notas (math, language, etc.)
+        const notasPrincipales = Object.values(this.#grades);
+
+        // 2. Extraemos solo los números de las electivas
+        const notasElectivas = this.#electives.map(e => e.grade);
+
+        // 3. Unimos todo en una sola lista de números
+        const todasLasNotas = [...notasPrincipales, ...notasElectivas];
+
+        // 4. Sumamos todo
+        const sumaTotal = todasLasNotas.reduce((acc, nota) => acc + nota, 0);
+
+        // 5. Calculamos la media (evitamos dividir por 0 por seguridad)
+        const totalAsignaturas = todasLasNotas.length;
+
+        return totalAsignaturas > 0
+            ? (sumaTotal / totalAsignaturas).toFixed(2)
+            : "0.00";
+    }
+
+    get id() { return this.#id; }
+    get name() { return this.#name; }
+    get surname() { return this.#surname; }
+    get age() { return this.#age; }
+    get course() { return this.#course; }
+
+    // Dentro de class Student
+    get math() { return this.#grades.math || 0; }
+    get language() { return this.#grades.language || 0; }
+    get science() { return this.#grades.science || 0; }
+    get history() { return this.#grades.history || 0; }
+
+
 
 
 }
@@ -58,6 +93,10 @@ export class Teacher {
         return `${this.#spec} - ${this.#email}`;
     }
 
+    get name (){
+        return this.#name;
+    }
+
     get details() {
         return {
             id: this.#id,
@@ -69,4 +108,10 @@ export class Teacher {
             email: this.#email
         };
     }
+
+
+    get course() {
+        return this.#course;
+    }
+    
 }

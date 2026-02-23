@@ -33,30 +33,33 @@ export function switchOPT(e) {
 //FUNCION: RENDERIZA TABLA
 export function renderTable (list) {
     
+    document.getElementById('table-body').innerHTML = " ";
     let html = ``;
-    
-   
 
     //Recorremos Lista
     list.forEach((p) =>{
-        let avg = (p.math + p.language / 2);
+        
+        let color = p.average >= 5? "bg-success":"bg-danger";
+        let avg = p.average;
         html += `<tr>
             <td class="ps-4">#${p.id}</td>
             <td class="fw-bold">${p.name} ${p.surname}</td>
-            <td>${p.age}</td>
-            <td>${p.course}</td>
-            <td class="">${p.math}</td>
-            <td class="">${p.language}</td>
-            <td class="fw-bold">${avg}</td>
-            <td class="text-end pe-4">
-                <button class="btn btn-sm btn-outline-secondary" data-id="${p.id}">Editar</button>
-                <button class="btn btn-sm btn-outline-danger" data-id="${p.id}">Eliminar</button>
-            </td>
+            <td>${p.math}</td>
+            <td>${p.language}</td>
+            <td class="">${p.science}</td>
+            <td class="">${p.history}</td>
+            <td class="fw-bold ${color}">${avg}</td>
+          
         </tr>`;
     })
 
     document.getElementById('table-body').innerHTML = html;
 
+}
+
+//FUNCION: Introduce el Tutor de cada curso
+export function renderNameTutor (name) {
+    document.getElementById('nombre-tutor-texto').textContent = name;
 }
 
 //HELPERS
@@ -70,6 +73,7 @@ function removeStyleNav (){
         
     });
 }
+
 
 function removeStyleOPT (){
     document.querySelectorAll("#optativas .list-group-item").forEach((btn) =>{

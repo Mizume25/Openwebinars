@@ -28,22 +28,14 @@ export const getAllStudents = async () => {
     const data = await dataHandler();
     if (!data) return [];
 
-    const allStudents = [];
-    
-    // Definimos las llaves que contienen alumnos según tu consola
-    const courseKeys = ["First", "Second", "Third", "Fourth"];
+    const allStudents = Object.values(data).flat(); //Aplanamos el esquema JSOON
 
-    courseKeys.forEach(key => {
-        // Verificamos que la llave exista en el JSON y sea un array
-        if (data[key] && Array.isArray(data[key])) {
-            data[key].forEach(studentData => {
-                allStudents.push(new Student(studentData));
-            });
-        }
-    });
+    let newList = allStudents
+    .filter((p) => p.id > 100) //Filtra los alumnos
+    .map((obj) => new Student(obj));  //Mapea los alumnos con el molde Student
 
-    console.log(`¡Éxito! Se han cargado ${allStudents.length} alumnos.`);
-    return allStudents;
+    console.log(`¡Éxito! Se han cargado ${newList.length} alumnos.`);
+    return newList;
 };
 
 
@@ -61,5 +53,29 @@ export const getTeachers = async () => {
     // Ejemplo: filtrar solo los de "Spec" (Optativas)
     console.log(`¡Éxito! Se han cargado ${teachersList.length} profesores.`);
     return teachersList;
+};
+
+//FUNCION: Devuelve una lista de arrays de arrays de Students
+export const getCourses = async () => {
+    const data = await dataHandler();
+
+    // Verificamos si la respuesta es correcta
+    if (!data) throw new Error("No se ha podido leer el JSON");
+
+    const courseKeys = ["First", "Second", "Third", "Fourth"];
+    const courses = {};
+
+    courseKeys.forEach(key => {
+        // Verificamos que el curso exista en el JSON y sea un array
+        if (data[key] && Array.isArray(data[key])) {
+            // Convertimos cada objeto plano en una instancia de Student
+            courses[key] = data[key].map(studentData => new Student(studentData));
+        } else {
+            courses[key] = []; // Si no hay alumnos, inicializamos vacío
+        }
+    });
+
+    console.log("Cursos cargados:", courses);
+    return courses;
 };
 
