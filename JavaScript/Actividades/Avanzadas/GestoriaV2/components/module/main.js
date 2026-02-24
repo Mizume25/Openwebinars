@@ -21,6 +21,12 @@ let teachers;
     //CARGAMOS POR DEFAULT
     const defaultList = await serv.loadCourse(listCourses, "1");
     ui.renderTable(defaultList);
+
+     //Buscamos tutor
+    let tutor = serv.insertTutor(teachers,"1st");
+
+    //Renderizamos tutor
+    ui.renderNameTutor(tutor);
 })();
 
 
@@ -33,7 +39,12 @@ select.navMain.addEventListener('click', async (e) => {
     ui.switchSection(e);
 
     if(btn.dataset.curso == "5"){
-        return ui.renderTable(allStudents);
+        let outerList = serv.insertListTutors(teachers);
+
+        ui.renderListTutor(outerList);
+
+        return ui.renderGeneral(allStudents);
+        
     }
     //Creamos una nueva lista
     let newList = await serv.loadCourse(listCourses,btn.dataset.curso);
@@ -41,10 +52,11 @@ select.navMain.addEventListener('click', async (e) => {
     //Y la renderizamos
     ui.renderTable(newList);
 
-    //renderizamos nombre tutor
-    let tutor = serv.insertTutor(listCourses,btn.dataset.curso);
+    //Buscamos tutor
+    let tutor = serv.insertTutor(teachers,btn.dataset.curso);
 
-    ui.renderNameTutor(tutor.name);
+    //Renderizamos tutor
+    ui.renderNameTutor(tutor);
 });
 
 //EVENT: Cambia color de buttons optativa

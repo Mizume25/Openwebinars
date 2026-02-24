@@ -51,6 +51,8 @@ export class Student {
     get surname() { return this.#surname; }
     get age() { return this.#age; }
     get course() { return this.#course; }
+    get incidents() {return this.#incidents; }
+    get enrollmentDate () {return this.#enrollmentDate; }
 
     // Dentro de class Student
     get math() { return this.#grades.math || 0; }
@@ -96,6 +98,8 @@ export class Teacher {
     get name (){
         return this.#name;
     }
+
+    get surname(){ return this.#surname; }
 
     get details() {
         return {

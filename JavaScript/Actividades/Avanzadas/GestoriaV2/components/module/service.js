@@ -20,10 +20,10 @@ export const loadCourse = async (arrays,number) => {
 // service.js
 export function insertTutor(list, number) {
   
-    let num = "";
+    let num = parseInt(number);
 
     //Modificamos
-    switch (number) {
+    switch (num) {
         case 1: num = "1st";
             break;
         case 2: num = "2nd";
@@ -37,12 +37,24 @@ export function insertTutor(list, number) {
 
     const teachersList = Object.values(list);
 
-    const teacher = teachersList.find(t => t.course === num);
+    const teacher = teachersList.find((t) => t.course === num);
 
+   
     return teacher;
 
 }
 
+//FUNCION: Insert list Tutors
+export function insertListTutors(list) {
+
+    const teachersList = Object.values(list);
+
+    const teachers = teachersList.filter((t) => t.course == "1st" || t.course == "2nd" || 
+    t.course == "3rd" || t.course == "4th");
+
+    return teachers;
+
+}
 function translate(num) {
     switch (num) {
         case 1: return "First";

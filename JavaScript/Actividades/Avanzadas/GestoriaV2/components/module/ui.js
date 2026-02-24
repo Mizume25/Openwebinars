@@ -57,9 +57,55 @@ export function renderTable (list) {
 
 }
 
+//FUNCION: RENDERIZA TABLA GENERAL
+export function renderGeneral (list){
+    //Renderizamos Heads
+    renderTableGeneral();
+
+    document.getElementById('table-body').innerHTML = " ";
+    let html = ``;
+
+    //Recorremos Lista
+    list.forEach((p) =>{
+        html += `<tr>
+            <td class="ps-4">#${p.id}</td>
+            <td class="fw-bold">${p.name} ${p.surname}</td>
+            <td>${p.age}</td>
+            <td>${p.course}</td>
+            <td>${p.incidents}</td>
+            <td>${p.enrollmentDate}</td>
+            <td class="text-end pe-4">
+            <button class="btn btn-sm btn-outline-secondary" data-id="${p.id}">Editar</button>
+            <button class="btn btn-sm btn-outline-danger" data-id="${p.id}">Eliminar</button>
+            </td>
+          
+        </tr>`;
+    });
+
+    document.getElementById('table-body').innerHTML = html;
+
+
+}
+
 //FUNCION: Introduce el Tutor de cada curso
-export function renderNameTutor (name) {
-    document.getElementById('nombre-tutor-texto').textContent = name;
+export function renderNameTutor (obj) {
+    let dis = document.getElementById('nombre-tutor-texto');
+    dis.textContent = obj.name;
+}
+
+export function renderListTutor (obj) {
+    let dis = document.getElementById('nombre-tutor-texto');
+    
+    let html = `<span>`;
+
+    obj.forEach((p)=>{
+        html += `${p.name} ${p.surname} &nbsp;`;
+    });
+
+    html += `</span>`;
+
+    dis.innerHTML = html;
+
 }
 
 //HELPERS
@@ -79,4 +125,57 @@ function removeStyleOPT (){
     document.querySelectorAll("#optativas .list-group-item").forEach((btn) =>{
         btn.classList.remove("active");
     })
+}
+
+//FUNCION: Renderiza tabla de Optativas
+function renderTableOPT (){
+
+    document.getElementById('head-table').innerHTML = "";
+
+    let html = ` <tr>
+                <th class="ps-4">ID</th>
+                <th>Alumno</th>
+                <th>OPT 1</th>
+                <th>OPT 2</th> 
+                <th>NOTA 1</th> 
+                <th>NOTA 2</th> 
+                </tr>`;
+
+    document.getElementById('head-table').innerHTML = html;
+}
+
+
+//FUNCION: Renderiza tabla genral
+function renderTableGeneral (){
+    document.getElementById('head-table').innerHTML = "";
+    
+    let html = ` <tr>
+                <th class="ps-4">ID</th>
+                <th>Alumno</th>
+                <th>Edad</th>
+                <th>Curso</th>
+                <th>Incidencias</th>
+                <th>Fecha Matriculacion</th>
+                <th class="text-end pe-4">EDIT</th>
+                </tr>`;
+
+    document.getElementById('head-table').innerHTML = html;
+}
+
+
+//FUNCION: Renderiza tabla Default
+function resetTableDefault(){
+    document.getElementById('head-table').innerHTML = "";
+
+    let html = ` <tr>
+                <th class="ps-4">ID</th>
+                <th>Alumno</th>
+                <th>Mates</th>
+                <th>Lengua</th>
+                <th>Ciencia</th>
+                <th>Historia</th>
+                <th>Media</th>  
+                </tr>`;
+
+    document.getElementById('head-table').innerHTML = html;
 }
