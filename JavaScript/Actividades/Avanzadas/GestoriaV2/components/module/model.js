@@ -54,12 +54,16 @@ export class Student {
     get incidents() {return this.#incidents; }
     get enrollmentDate () {return this.#enrollmentDate; }
 
+
     // Dentro de class Student
     get math() { return this.#grades.math || 0; }
     get language() { return this.#grades.language || 0; }
     get science() { return this.#grades.science || 0; }
     get history() { return this.#grades.history || 0; }
-
+    get optOneName () {return this.#electives[0].name;}
+    get optSecondName () {return this.#electives[1].name}
+    get optOneGrade () {return this.#electives[0].grade;}
+    get optSecondGrade () {return this.#electives[1].grade;}
 
 
 

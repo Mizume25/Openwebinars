@@ -60,6 +60,16 @@ select.navMain.addEventListener('click', async (e) => {
 });
 
 //EVENT: Cambia color de buttons optativa
-select.asideBTN.addEventListener('click', ui.switchOPT);
+select.asideBTN.addEventListener('click', (e) => {
+    
+    ui.switchOPT(e);
+
+    let newList = serv.loadElective(allStudents,e);
+
+    ui.renderListOPT(newList,e);
+
+
+
+});
 
 

@@ -87,6 +87,32 @@ export function renderGeneral (list){
 
 }
 
+//FUNCION: Renderiza la lista de optativas
+export function renderListOPT(filteredList, e) {
+    const selectedName = e.target.value;
+    const tableBody = document.getElementById('table-body');
+    
+    let html = "";
+
+    filteredList.forEach((p) => {
+        // Buscamos el objeto específico dentro del array del alumno
+        const targetOpt = p.electives.find(opt => opt.name === selectedName);
+
+        // Si por alguna razón no la encuentra (seguridad), usamos valores vacíos
+        const grade = targetOpt ? targetOpt.grade : "-";
+
+        html += `
+        <tr>
+            <td class="ps-4">#${p.id}</td>
+            <td class="fw-bold">${p.name} ${p.surname}</td>
+            <td>${selectedName}</td>
+            <td class="text-center">${grade}</td>
+        </tr>`;
+    });
+
+    tableBody.innerHTML = html;
+}
+
 //FUNCION: Introduce el Tutor de cada curso
 export function renderNameTutor (obj) {
     let dis = document.getElementById('nombre-tutor-texto');
@@ -107,6 +133,8 @@ export function renderListTutor (obj) {
     dis.innerHTML = html;
 
 }
+
+
 
 //HELPERS
 function removeStyleNav (){
@@ -135,10 +163,8 @@ function renderTableOPT (){
     let html = ` <tr>
                 <th class="ps-4">ID</th>
                 <th>Alumno</th>
-                <th>OPT 1</th>
-                <th>OPT 2</th> 
-                <th>NOTA 1</th> 
-                <th>NOTA 2</th> 
+                <th>OPT</th>
+                <th>NOTA</th> 
                 </tr>`;
 
     document.getElementById('head-table').innerHTML = html;

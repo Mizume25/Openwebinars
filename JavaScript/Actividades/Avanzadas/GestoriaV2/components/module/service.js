@@ -16,6 +16,16 @@ export const loadCourse = async (arrays,number) => {
     
 }
 
+//FUNCION: Filtra lista segun optativas
+export function loadElective(list, e) {
+    const selectedName = e.target.value;
+    
+    // Filtramos: "Solo los alumnos que tengan esta optativa en su lista"
+    return list.filter(p => 
+        p.electives.some(opt => opt.name === selectedName)
+    );
+}
+
 //FUNCION : INSERTA TUTOR DE UNA CLASE
 // service.js
 export function insertTutor(list, number) {
