@@ -66,6 +66,12 @@ export class Student {
     get optSecondGrade () {return this.#electives[1].grade;}
 
 
+    // Dentro de class Student
+    getGradeByElectiveName(name) {
+    const found = this.#electives.find(e => e.name === name);
+    return found ? found.grade : "N/A";
+    }
+
 
 }
 
@@ -77,7 +83,6 @@ export class Teacher {
     #name;
     #surname;
     #spec;
-    #role;
     #email;
 
     constructor(data) {
@@ -86,7 +91,6 @@ export class Teacher {
         this.#name = data.name;
         this.#surname = data.surname;
         this.#spec = data.spec;
-        this.#role = data.role || "Tutor"; // Si no tiene role, asumimos que es Tutor
         this.#email = data.email;
     }
 
@@ -99,12 +103,10 @@ export class Teacher {
         return `${this.#spec} - ${this.#email}`;
     }
 
-    get name (){
-        return this.#name;
-    }
-
+    get name (){return this.#name;}
     get surname(){ return this.#surname; }
-
+    get spec () {return this.#spec;}
+    get email () {return this.#email;}
     get details() {
         return {
             id: this.#id,
@@ -112,7 +114,6 @@ export class Teacher {
             name: this.#name,
             surname: this.#surname,
             specialization: this.#spec,
-            role: this.#role,
             email: this.#email
         };
     }

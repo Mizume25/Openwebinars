@@ -3,6 +3,7 @@ import * as ui from './ui.js';
 import * as select from './selectors.js'
 import * as api from './api.js';
 import * as serv from './service.js';
+
 //LISTAS IMPORTADAS
 let listCourses;
 let allStudents;
@@ -23,10 +24,10 @@ let teachers;
     ui.renderTable(defaultList);
 
      //Buscamos tutor
-    let tutor = serv.insertTutor(teachers,"1st");
+    let tutor = serv.insertTutor(teachers,"1");
 
     //Renderizamos tutor
-    ui.renderNameTutor(tutor);
+    ui.renderTutor(tutor);
 })();
 
 
@@ -41,11 +42,13 @@ select.navMain.addEventListener('click', async (e) => {
     if(btn.dataset.curso == "5"){
         let outerList = serv.insertListTutors(teachers);
 
-        ui.renderListTutor(outerList);
+        ui.renderNameTutor(outerList);
 
         return ui.renderGeneral(allStudents);
         
     }
+
+    if (btn.dataset.curso == "profesores") return ui.renderListTutor(teachers);
     //Creamos una nueva lista
     let newList = await serv.loadCourse(listCourses,btn.dataset.curso);
 
@@ -56,19 +59,23 @@ select.navMain.addEventListener('click', async (e) => {
     let tutor = serv.insertTutor(teachers,btn.dataset.curso);
 
     //Renderizamos tutor
-    ui.renderNameTutor(tutor);
+    ui.renderTutor(tutor);
 });
 
 //EVENT: Cambia color de buttons optativa
 select.asideBTN.addEventListener('click', (e) => {
-    
+    const btn = e.target.closest('[data-curso]');
     ui.switchOPT(e);
 
     let newList = serv.loadElective(allStudents,e);
 
     ui.renderListOPT(newList,e);
 
+     //Buscamos tutor
+    let tutor = serv.insertTutor(teachers,btn.dataset.curso);
 
+    //Renderizamos tutor
+    ui.renderTutor(tutor);
 
 });
 

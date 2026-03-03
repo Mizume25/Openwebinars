@@ -18,12 +18,14 @@ export const loadCourse = async (arrays,number) => {
 
 //FUNCION: Filtra lista segun optativas
 export function loadElective(list, e) {
-    const selectedName = e.target.value;
-    
-    // Filtramos: "Solo los alumnos que tengan esta optativa en su lista"
-    return list.filter(p => 
-        p.electives.some(opt => opt.name === selectedName)
+    const nameElective = e.target.value;
+
+    // Filtramos comparando contra los dos getters de la clase Student
+    const filteredList = list.filter((student) => 
+        student.optOneName === nameElective || student.optSecondName === nameElective
     );
+
+    return filteredList;
 }
 
 //FUNCION : INSERTA TUTOR DE UNA CLASE
@@ -41,6 +43,12 @@ export function insertTutor(list, number) {
         case 3: num = "3rd";
             break;
         case 4: num = "4th";
+            break;
+        case 6: num = "Theater";
+            break;
+        case 7: num = "Robotics";
+            break;
+        case 8: num = "Choir";
             break;
         default: num = null;
     }

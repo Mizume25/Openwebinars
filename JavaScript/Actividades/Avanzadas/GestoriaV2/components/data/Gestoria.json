@@ -2,11 +2,12 @@
   "Teachers": [
     { "id": 10, "course": "1st", "name": "Beatriz", "surname": "Méndez", "spec": "Natural Sciences", "email": "bmendez@academy.edu" },
     { "id": 11, "course": "2nd", "name": "Carlos", "surname": "Soto", "spec": "Mathematics", "email": "csoto@academy.edu" },
-    { "id": 12, "course": "3rd", "name": "Elena", "surname": "Rivas", "spec": "Language and Literature", "email": "erivas@academy.edu" },
+    { "id": 12, "course": "3rd", "name": "Sara", "surname": "Rivas", "spec": "Language and Literature", "email": "erivas@academy.edu" },
     { "id": 13, "course": "4th", "name": "Ricardo", "surname": "Ponce", "spec": "History", "email": "rponce@academy.edu" },
-    {"id": 14,"course":"Spec","name":"Isabel","surname":"Aranda","spec":"Drama","role":"Theater Workshop","email":"iaranda@academy.edu"},
-    {"id": 15,"course":"Spec","name":"Marcos","surname":"Vidal","spec":"Auto. Eng","role":"Robotics","email":"mvidal@academy.edu"},
-    {"id": 16,"course":"Spec","name":"Elena","surname":"Casals","spec":"Musicology","role":"Choir Director","email":"ecasals@academy.edu"}
+    {"id": 14,"course":"Theater","name":"Isabel","surname":"Aranda","spec":"Drama","email":"iaranda@academy.edu"},
+    {"id": 15,"course":"Robotics","name":"Marcos","surname":"Vidal","spec":"Auto.Eng","email":"mvidal@academy.edu"},
+    {"id": 16,"course":"Choir","name":"Elena","surname":"Casals","spec":"Musicology","email":"ecasals@academy.edu"},
+    {"id": 17, "course":"Director", "name":"Gabriel", "surname":"Castro", "spec":"Director", "email":"gcastro@academy.edu"}
   ],
   "First": [
     { "id": 116, "name": "Adriana", "surname": "Torres", "age": 12, "course": "1st", "grades": { "math": 6.5, "language": 7.0, "science": 6.8, "history": 7.2 }, "electives": [{"name": "Robotics", "grade": 7}, {"name": "Choir", "grade": 8}], "incidents": "None", "enrollmentDate": "2025-09-01" },

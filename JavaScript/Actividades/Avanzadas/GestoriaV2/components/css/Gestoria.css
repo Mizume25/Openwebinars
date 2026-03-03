@@ -1,0 +1,10 @@
+/* Contenedor principal de las cards */
+.grid-tutores {
+    display: grid;
+    /* Crea columnas de mínimo 250px, llenando el espacio disponible */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem; /* Espacio entre las filas y columnas */
+    padding: 1.5rem;
+    width: 100%;
+}
+
