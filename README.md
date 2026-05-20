@@ -21,6 +21,7 @@ transpilar código JS.
 
 
 Certificados Obtenidos:
+
 [Fundamentos](https://openwebinars.net/cert/jSqh)
 
 [Manipulacion del DOM](https://openwebinars.net/cert/ty17) 
