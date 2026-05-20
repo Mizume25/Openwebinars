@@ -8,7 +8,7 @@ interface properties {
     name:       string;
     last_name:  string;
     age:        number;
-    cert:      string[]; //Array de Strings 
+    cert?:      string[]; //Array de Strings 
 };
 
 
@@ -45,13 +45,14 @@ const renderList: RenderCallback = (data: properties[]) => {
 
     data.forEach((p) => {
         // Estructuramos mejor el HTML para que sea legible
+        const certificados = (p.cert || []).join(", ") || "Ninguno";
         html += `
             <div class="user-card">
                 <ul>
                     <li><strong>Nombre:</strong> ${p.name}</li>
                     <li><strong>Apellido:</strong> ${p.last_name}</li>
                     <li><strong>Edad:</strong> ${p.age}</li>
-                    <li><strong>Certificados:</strong> ${p.cert.join(", ")}</li>
+                    <li><strong>Certificados:</strong> ${certificados}</li>
                 </ul>
             </div>
             <hr>`;
@@ -67,7 +68,7 @@ async function loadJson(e: Event, callback: RenderCallback) {
     let list: properties[] | undefined = await dataHandler();
 
     if (list) {
-      console.log("Lista Cargado"),
+      console.log("Lista Cargado");
       callback(list);
     } else {
         console.error("No se pudieron cargar los datos para el callback.");
