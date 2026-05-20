@@ -22,7 +22,9 @@ transpilar código JS.
 
 Certificados Obtenidos:
 [Fundamentos](https://openwebinars.net/cert/jSqh)
+
 [Manipulacion del DOM](https://openwebinars.net/cert/ty17) 
+
 [React](https://openwebinars.net/cert/bo0Z)
 *(Principalmente aqui aplique conocimiento JavaScript)*
 
